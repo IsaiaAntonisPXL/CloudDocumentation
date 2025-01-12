@@ -667,6 +667,123 @@ __Compliance-controle:__
         
         AWS Trusted Advisor helpt bij het waarborgen van naleving van best practices, zoals het versleutelen van gegevens in rust.
 ## DevOps tools in de cloud
+
+__DevOps__ is een cultuur en een set van praktijken die erop gericht zijn om de samenwerking tussen ontwikkelings- en operationele teams te verbeteren, zodat software sneller en efficiënter kan worden geleverd.
+
+### __Concepten in Continuous Integration (CI) en Continuous Delivery (CD)__
+__1. Continuous Integration (CI)__
+
+    Omschrijving: Continuous Integration is het proces waarbij ontwikkelaars regelmatig (meestal meerdere keren per dag) code integreren in een gedeelde repository. Elke integratie wordt vervolgens geautomatiseerd getest.
+    Voorbeeld: 
+    
+    Ontwikkelaars pushen hun code naar AWS CodeCommit en een geautomatiseerd proces in AWS CodeBuild voert tests uit en meldt de status van de integratie.
+
+2. Continuous Delivery (CD)
+
+    Omschrijving: Continuous Delivery is de praktijk waarbij de geautomatiseerde testen en builds verder worden geautomatiseerd om ervoor te zorgen dat code altijd in een releasebare staat is. Het doel is om code continu naar productie-omgevingen te brengen.
+    Voorbeeld: Een applicatie is altijd klaar voor productie, en elke keer als een wijziging in AWS CodeCommit wordt gepusht, wordt het door AWS CodePipeline automatisch gepromoot naar een stagingomgeving.
+
+3. Continuous Deployment
+
+    Omschrijving: Continuous Deployment is het proces waarbij elke succesvolle wijziging automatisch naar de productieomgeving wordt gedeployed zonder handmatige tussenkomst.
+    Voorbeeld: Na elke succesvolle commit naar AWS CodeCommit wordt de code automatisch gedeployed naar de productieomgeving via AWS CodeDeploy.
+
+DevOps Culture
+Eigenschappen van DevOps Culture
+
+    Samenwerking en Communicatie:
+        Omschrijving: DevOps moedigt de samenwerking aan tussen development en operations teams. Dit zorgt ervoor dat beide teams dezelfde doelen hebben en dat communicatie tussen deze teams altijd soepel verloopt.
+        Voorbeeld: Regelmatige stand-ups tussen ontwikkelaars, testers en operations zorgen ervoor dat iedereen op de hoogte is van de voortgang en eventuele problemen.
+
+    Verantwoordelijkheid:
+        Omschrijving: In DevOps zijn zowel ontwikkelaars als operationele teams gezamenlijk verantwoordelijk voor het succes van de software, van ontwikkeling tot productie.
+        Voorbeeld: Beide teams moeten samenwerken om ervoor te zorgen dat de software efficiënt presteert in productieomgevingen.
+
+    Automatisering:
+        Omschrijving: DevOps legt de nadruk op automatisering van handmatige taken zoals testen, builds en deploys, wat leidt tot snellere en betrouwbaardere softwareleveringen.
+        Voorbeeld: Automatisering van builds en tests via AWS CodeBuild zorgt ervoor dat code snel en betrouwbaar kan worden gepusht naar productie.
+
+Verschillende DevOps Practices
+1. Automated Testing
+
+    Omschrijving: Het uitvoeren van geautomatiseerde tests om ervoor te zorgen dat code voldoet aan de kwaliteitsnormen voordat het naar productie wordt gepusht.
+    Voorbeeld: AWS CodeBuild draait automatische tests voor elke codewijziging die in AWS CodeCommit wordt gepusht.
+
+2. Infrastructure as Code (IaC)
+
+    Omschrijving: Het beheren van infrastructuur door middel van code, wat zorgt voor herhaalbaarheid, schaalbaarheid en eenvoudiger beheer van omgevingen.
+    Voorbeeld: AWS CloudFormation wordt gebruikt om alle benodigde AWS-omgevingen (zoals EC2-instances, RDS-databases) in code te definiëren en te beheren.
+
+3. Continuous Monitoring
+
+    Omschrijving: Het voortdurend bewaken van applicaties en infrastructuur om problemen snel op te sporen en te reageren.
+    Voorbeeld: AWS X-Ray wordt gebruikt om prestaties en foutinformatie van een applicatie in real-time te monitoren en te visualiseren.
+
+4. Collaboration and Communication
+
+    Omschrijving: Het verbeteren van de communicatie en samenwerking tussen teams, wat helpt bij het sneller oplossen van problemen en het versnellen van de softwarelevering.
+    Voorbeeld: Teams gebruiken chattools zoals Slack om feedback en waarschuwingen van AWS-services snel te ontvangen.
+
+Voordelen van DevOps volgens AWS
+
+    Snellere levering van software:
+        Omschrijving: Door het proces van het bouwen, testen en implementeren van software te automatiseren, kunnen teams sneller en efficiënter software leveren.
+        Voorbeeld: AWS CodePipeline automatiseert het hele CI/CD-proces, zodat software sneller kan worden gepusht naar productie.
+
+    Betere samenwerking tussen teams:
+        Omschrijving: DevOps bevordert samenwerking tussen ontwikkeling, operations en andere teams om gezamenlijke doelen na te streven.
+        Voorbeeld: Ontwikkelaars, operations teams en QA werken samen in de pipeline om code van concept tot productie te brengen.
+
+    Verhoogde efficiëntie:
+        Omschrijving: Door automatisering en samenwerking kunnen teams hun tijd en middelen beter benutten.
+        Voorbeeld: Door de CI/CD-pijplijn van AWS CodePipeline en CodeBuild te automatiseren, hoeven teams zich niet bezig te houden met handmatige taken.
+
+    Betrouwbaardere software:
+        Omschrijving: Door geautomatiseerde tests en monitoring kunnen fouten sneller worden opgespoord en opgelost.
+        Voorbeeld: AWS X-Ray helpt bij het identificeren van prestatieproblemen en fouten in de productieomgeving, zodat ze snel kunnen worden opgelost.
+
+5 Fasen van Release en Monitor
+1. Plan:
+
+    Omschrijving: Het plannen van de features en wijzigingen die moeten worden ontwikkeld en uitgerold.
+    AWS Service: AWS CodeCommit voor het beheren van broncode.
+    Voorbeeld: Een team plant nieuwe functies voor hun applicatie en creëert een repository in AWS CodeCommit.
+
+2. Develop:
+
+    Omschrijving: Het ontwikkelen van de software en het schrijven van de code.
+    AWS Service: AWS CodeBuild voor het bouwen van de applicatie.
+    Voorbeeld: Ontwikkelaars schrijven code in AWS CodeCommit, en AWS CodeBuild automatiseert de bouw van de applicatie.
+
+3. Build:
+
+    Omschrijving: Het bouwen van de applicatie en het uitvoeren van geautomatiseerde tests.
+    AWS Service: AWS CodeBuild voor build en tests.
+    Voorbeeld: AWS CodeBuild voert tests uit op de code in AWS CodeCommit om ervoor te zorgen dat alles correct werkt.
+
+4. Deploy:
+
+    Omschrijving: Het implementeren van de software naar de productieomgeving.
+    AWS Service: AWS CodeDeploy voor het deployen van applicaties.
+    Voorbeeld: Na een succesvolle build, gebruikt AWS CodeDeploy om de code naar productieomgevingen te pushen.
+
+5. Monitor:
+
+    Omschrijving: Het bewaken van de prestaties en de gezondheid van de applicatie in productie.
+    AWS Service: AWS CloudWatch voor monitoring van de applicatieprestaties.
+    Voorbeeld: AWS CloudWatch wordt gebruikt om de prestaties van de applicatie in real-time te monitoren en eventuele problemen op te sporen.
+
+Vergelijking van AWS CodeBuild en Jenkins
+
+    AWS CodeBuild:
+        Omschrijving: AWS CodeBuild is een volledig beheerde build-service die code bouwt, test en deployt zonder de noodzaak van servers.
+        Vergelijking: Het biedt naadloze integratie met andere AWS-services zoals CodeCommit en CodePipeline.
+        Praktische Case: Een bedrijf gebruikt AWS CodeBuild voor het automatiseren van build- en testprocessen voor hun applicaties.
+
+    Jenkins:
+        Omschrijving: Jenkins is een open-source automation server die gebruikt wordt voor Continuous Integration en Continuous Deployment.
+        Vergelijking: Jenkins vereist meer handmatige configuratie en beheer van de server, terwijl CodeBuild volledig beheerd wordt door AWS.
+        Praktische Case: Jenkins wordt vaak gebruikt in omgevingen waar volledige controle over de serverconfiguratie vereist is, terwijl AWS CodeBuild eenvoudiger is voor teams die geen servers willen beheren.
 ## Container service in de cloud
 ## Cloudformation en Automation
 
