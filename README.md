@@ -934,5 +934,180 @@ In ECS worden task definitions gebruikt om container-configuraties te definiëre
 In Kubernetes, via Deployments, kun je versies beheren met behulp van replica sets en rolling updates. Kubernetes biedt een gedetailleerdere controle over de versie en de uitrolstrategieën. Dit vereist echter meer configuratie en kennis van Kubernetes zelf.
 
     Voorbeeld: In Kubernetes zou je een Deployment gebruiken om de versie van een pod te beheren. Als je een nieuwe versie wilt uitrollen, maak je een nieuwe versie van de Deployment en Kubernetes zorgt voor een geleidelijke uitrol zonder downtime.
+## Observability in the cloud
+### Concepten rond observability
+__1. Operational Model__
+
+Het operationele model beschrijft de manier waarop een organisatie haar IT-systemen beheert, waaronder monitoring, incidentbeheer, en de implementatie van best practices voor operationele efficiëntie.
+    Voorbeeld: 
+    
+    Een bedrijf dat een cloudgebaseerde applicatie draait, kan een operationeel model implementeren waarbij elke infrastructuurcomponent automatisch wordt gemonitord, zodat problemen snel kunnen worden geïdentificeerd en opgelost.
+
+__2. Observability__
+
+Observability verwijst naar de mogelijkheid om te begrijpen wat er in een systeem gebeurt door het verzamelen van gegevens (zoals logs, metrics, en traces) die helpen bij het identificeren van prestaties, betrouwbaarheid en gezondheidsproblemen.
+    Voorbeeld: 
+    
+    Een webshop kan observability implementeren om de prestaties van hun back-end services te monitoren en snel in te grijpen als er vertragingen of uitval optreden.
+
+__3. End-to-End Tracing__
+
+End-to-end tracing volgt een verzoek of transactie door het hele systeem, van de initiële aanroep tot de uiteindelijke respons, om te helpen bij het identificeren van knelpunten of fouten.
+    Voorbeeld: 
+    
+    In een microservices-architectuur wordt end-to-end tracing gebruikt om te volgen hoe een klantbestelling door verschillende services gaat, van het ontvangen van het verzoek tot het verwerken van de betaling en het verzenden van de bevestiging.
+
+__4. Service Map__
+
+Een service map is een visuele weergave van de relaties tussen verschillende services en componenten in een systeem, en toont hoe verkeer stroomt tussen deze componenten.
+    Voorbeeld: 
+    
+    AWS X-Ray genereert een service map die de verbindingen toont tussen verschillende microservices die betrokken zijn bij een klanttransactie.
+
+__5. Latency__
+
+Latency is de vertraging tussen het verzenden van een verzoek en het ontvangen van een antwoord. Het meten van latency helpt bij het identificeren van traagheden in een systeem.
+    Voorbeeld: 
+    
+    Als een API-aanroep naar een externe service lang duurt om te beantwoorden, kan de latency worden gemeten om te helpen bij het oplossen van het probleem.
+
+__6. Percentile__
+
+Percentile is een statistische maat die aangeeft hoeveel procent van de waarnemingen onder een bepaalde waarde vallen. Het wordt vaak gebruikt om prestatiegegevens te analyseren, zoals responstijden.
+    Voorbeeld: 
+    
+    In een webapplicatie kan het 95e percentile van de responstijden aangeven dat 95% van de verzoeken binnen een bepaalde tijdslimiet worden beantwoord, terwijl de overige 5% een langere tijd nodig heeft.
+
+__7. Traffic Shaping__
+
+Traffic shaping is het proces van het beheren en beperken van het netwerkverkeer om de prestaties van een applicatie te optimaliseren en overbelasting te voorkomen.
+    Voorbeeld:
+    
+     Een bedrijf kan traffic shaping gebruiken om te voorkomen dat te veel verkeer in een piekperiode de webapplicatie vertraagt.
+
+__8. Routing Controls__
+
+Routing controls zijn mechanismen die bepalen hoe verkeer wordt geleid door verschillende paden of diensten in een netwerk, afhankelijk van bepaalde voorwaarden of criteria.
+    Voorbeeld:
+    
+     In een multi-region setup kan AWS Global Accelerator routing controls gebruiken om verkeer naar de dichtstbijzijnde regio te sturen, afhankelijk van de prestaties.
+
+__9. Circuit Breakers__
+
+ Circuit breakers zijn patronen die worden gebruikt om systemen te beschermen tegen overbelasting door het tijdelijk uitschakelen van services die niet goed functioneren, waardoor andere systemen niet beïnvloed worden.
+    Voorbeeld: 
+    
+    Een microservice die afhankelijk is van een externe API kan een circuit breaker implementeren om te voorkomen dat verzoeken worden verzonden als de API tijdelijk niet beschikbaar is.
+
+## Implementatie van Observability (volgens AWS)
+__3 Veranderingen die nodig zijn om Observability te implementeren__
+
+__Verzamelen van de juiste gegevens:__
+        Uitleg: Je moet de juiste gegevens verzamelen zoals logs, metrics en traces om inzicht te krijgen in de gezondheid van je systeem.
+        Voorbeeld: 
+        
+        Gebruik van Amazon CloudWatch Logs voor het verzamelen van gedetailleerde logs en het configureren van AWS X-Ray voor tracing.
+
+__Infrastructuur en applicatie-integratie:__
+        Uitleg: Zorg ervoor dat je infrastructuur en applicaties goed geïntegreerd zijn met monitoringtools zodat je real-time gegevens kunt verzamelen.
+        Voorbeeld: 
+        
+        Het gebruik van CloudWatch Metrics voor servergebruik en CloudWatch Alarms voor het automatisch waarschuwen bij kritieke drempels.
+
+__Probleemoplossing en actie:__
+        Uitleg: Gebruik de verzamelde gegevens om snel problemen te identificeren en op te lossen.
+        Voorbeeld: 
+        
+        Door observability kun je snel zien dat de responstijd van je API is verhoogd en actie ondernemen door de belasting op de servers te verminderen.
+
+### 6 Elementen voor Modern Application Development
+
+__Cloud Native:__
+    Het ontwikkelen van applicaties die ontworpen zijn voor de cloud, waarbij ze profiteren van schaalbaarheid, veerkracht en flexibiliteit.
+        Usecase: 
+        
+    Een startup bouwt een cloud-native applicatie in AWS, gebruikmakend van verschillende AWS-diensten zoals EC2, Lambda, en RDS.
+
+__Microservices:__
+    Het opdelen van applicaties in kleine, onafhankelijke services die kunnen worden gedeployed, beheerd en geschaald.
+        Usecase: 
+        
+    Een e-commerceplatform implementeert microservices voor betalingsverwerking, voorraadbeheer en klantenservice, waarbij elke service afzonderlijk kan worden geschaald.
+
+__Containers:__
+    Het verpakken van applicaties en hun afhankelijkheden in containers voor gemakkelijke implementatie en schaalbaarheid.
+        Usecase: 
+        
+    Een ontwikkelteam gebruikt Docker en ECS om hun applicatie in containers te draaien en automatisch te schalen op basis van de vraag.
+
+__Serverless:__
+Het bouwen van applicaties zonder je zorgen te maken over het beheren van servers, waarbij cloudproviders de infrastructuur beheren.
+        Usecase: 
+        
+        Een bedrijf gebruikt AWS Lambda om API-aanroepen te verwerken zonder serverbeheer, waarbij de applicatie automatisch schaalt op basis van het aantal verzoeken.
+
+__CI/CD:__
+Het implementeren van continue integratie en continue levering om sneller en veiliger nieuwe versies van applicaties uit te rollen.
+        Usecase: 
+        
+        Een DevOps-team gebruikt AWS CodePipeline en AWS CodeBuild voor automatische code-integratie en -implementatie naar productie.
+
+__Security:__
+Het integreren van beveiliging in elke fase van de applicatieontwikkeling en -implementatie.
+        Usecase: 
+        
+        Een fintech-applicatie implementeert encryptie en IAM-beleid via AWS om te zorgen voor veilige toegang tot gevoelige klantinformatie.
+
+Proactieve- en Reactieve Operations
+
+    Proactieve Operations:
+         Proactieve operations omvatten het anticiperen op mogelijke problemen voordat ze zich voordoen, bijvoorbeeld door monitoring en performance-optimalisatie.
+        Voorbeeld: Het instellen van CloudWatch Alarms om vooraf waarschuwingen te ontvangen voordat systeembronnen uitputten.
+
+    Reactieve Operations:
+         Reactieve operations richten zich op het oplossen van problemen zodra ze zich voordoen.
+        Voorbeeld: Wanneer een server crasht, wordt automatisch een incident aangemaakt en wordt het probleem opgelost door het team via AWS Systems Manager.
+
+Niveaus van Observability
+
+    Metrics:
+         Het verzamelen van kwantitatieve gegevens over systeemgedrag, zoals CPU-gebruik, geheugen of responstijd.
+        Usecase: Het gebruik van CloudWatch Metrics om systeemcapaciteit en prestaties te monitoren.
+
+    Logs:
+         Het verzamelen van gedetailleerde tekstgegevens die inzicht geven in wat er zich binnen een systeem afspeelt.
+        Usecase: Het gebruik van CloudWatch Logs om foutmeldingen van applicaties in real-time te monitoren.
+
+    Traces:
+         Het volgen van de volledige levenscyclus van een transactie binnen het systeem, wat nuttig is voor debugging en prestatieanalyse.
+        Usecase: Het gebruik van AWS X-Ray om een klanttransactie van begin tot eind te volgen en knelpunten te identificeren.
+
+Pijlers van Observability
+
+    Monitoring:
+         Het continu volgen van systeemgedrag en prestaties.
+        Voorbeeld: Gebruik van CloudWatch om continu server- en applicatieprestaties te bewaken.
+
+    Logging:
+         Het vastleggen van gedetailleerde tekstuele gegevens die je helpen bij het onderzoeken van fouten.
+        Voorbeeld: Het gebruiken van CloudWatch Logs om applicatiefouten te identificeren.
+
+    Tracing:
+         Het volgen van het pad van verzoeken en data door een systeem.
+        Voorbeeld: Het gebruik van AWS X-Ray voor end-to-end tracing van een klantbestelling.
+
+Voordelen van Application Observability
+
+    Snel Probleemoplossing:
+        Uitleg: Door snel inzicht te krijgen in systeemprestaties kunnen problemen sneller worden opgelost.
+        Voorbeeld: In een webwinkel kan de observability-tools snel een trage database-query identificeren en het probleem verhelpen.
+
+    Betere Systeemoptimalisatie:
+        Uitleg: Het identificeren van knelpunten leidt tot gerichte optimalisatie van het systeem.
+        Voorbeeld: Een cloudgebaseerde applicatie die regelmatig traag is, kan worden geoptimaliseerd door de CPU- en geheugengebruik te monitoren via CloudWatch Metrics.
+
+    Verhoogde Beschikbaarheid:
+        Uitleg: Het monitoren van applicatieprestaties helpt bij het identificeren van problemen die de beschikbaarheid kunnen beïnvloeden, wat de uptime verbetert.
+        Voorbeeld: Door observability in te stellen, kan een website automatisch reageren op verhoogd verkeer en schaalbare infrastructuur implementeren om downtime te voorkomen.
 ## Cloudformation en Automation
 
