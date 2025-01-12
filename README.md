@@ -1,3 +1,4 @@
+# Cloud samenvatting
 <!-- vscode-markdown-toc -->
 * 1. [Opfrissing cloud concepten](#Opfrissingcloudconcepten)
 	* 1.1. [AWS layers](#AWSlayers)
@@ -78,7 +79,8 @@
 	numbering=true
 	autoSave=true
 	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc --># Cloud samenvatting
+<!-- /vscode-markdown-toc -->
+
 
 
 ##  1. <a name='Opfrissingcloudconcepten'></a>Opfrissing cloud concepten
