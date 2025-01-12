@@ -608,11 +608,11 @@ __Meerdere meldingsopties:__
 ### EC2 Instances voor FinOps
 __Categorieën:__
 
-On-Demand Instances:
+__On-Demand Instances:__
         : Betaal per uur voor de compute-kracht die je gebruikt zonder langdurige verplichtingen.
         Voorbeeld: Een startup maakt gebruik van on-demand instances voor tijdelijke workloads.
 
-Reserved Instances:
+__Reserved Instances:__
         : Betaal vooraf voor een langdurig gebruik van EC2-instances en krijg korting op de kosten.
         Voorbeeld: Een bedrijf koopt reserved instances om kosten te besparen voor continu draaiende workloads.
 
