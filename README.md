@@ -229,7 +229,8 @@ Bij het kiezen van een regio moet je wel op onderstaande letten:
 __Voorbeeld__:
 
     Amazon EU (Frankfurt) Region: Een Europese e-commercewebsite gebruikt de Frankfurt-regio om lage latentie te bieden aan klanten in Europa.
-    Use case: Het kiezen van een regio dicht bij klanten om snellere responstijden te realiseren.
+
+__Use case:__ Het kiezen van een regio dicht bij klanten om snellere responstijden te realiseren.
 
 #### 2. Availability Zones (AZs)
 
@@ -240,7 +241,7 @@ In eigen woorden: Een AZ is een cluster van datacenters in een regio. Het gebrui
 __Voorbeeld__:
 
     Een applicatie die gebruikmaakt van meerdere AZ's in de US East (N. Virginia) Region om downtime te voorkomen.
-    Use case: Het draaien van een database in twee AZ's met automatische failover voor hoge beschikbaarheid.
+__Use case:__ Het draaien van een database in twee AZ's met automatische failover voor hoge beschikbaarheid.
 
 #### 3. Edge Locations
 
@@ -251,7 +252,8 @@ In eigen woorden: Dit zijn datacenters verspreid over de hele wereld die zorgen 
 __Voorbeeld__:
 
     Een streamingplatform maakt gebruik van een edge-locatie in Tokyo om video's met lage latency te leveren aan kijkers in Japan.
-    Use case: Een internationaal bedrijf gebruikt edge-locaties om een wereldwijd publiek snel toegang te bieden tot statische en dynamische content.
+
+__Use case:__ Een internationaal bedrijf gebruikt edge-locaties om een wereldwijd publiek snel toegang te bieden tot statische en dynamische content.
 ## System tools
 
 AWS Systems Manager is een krachtige service voor het beheren van de infrastructuur van AWS-cloudomgevingen. Het biedt een breed scala aan tools voor het beheren, bewaken en automatiseren van IT-operaties. Hieronder worden verschillende concepten en gerelateerde services binnen AWS Systems Manager besproken.
@@ -296,15 +298,15 @@ Voorbeeld:
 
 
 AWS Systems Manager is een uitgebreide beheeroplossing voor AWS-cloudinfrastructuren, waarmee je automatisch je virtuele servers kunt beheren, configureren en schalen. Het biedt tools zoals automation, compliance monitoring, patchbeheer en incidentmanagement om je IT-infrastructuur efficiënt te beheren.
-Praktische Case
 
-Stel je voor dat een bedrijf een cloudgebaseerde webapplicatie uitvoert op verschillende EC2-instances. Ze gebruiken AWS Systems Manager om regelmatig patches te implementeren, beveiligingsinstellingen te controleren, en de prestaties van hun infrastructuur in de gaten te houden. Dit vermindert handmatige fouten, verhoogt de uptime en zorgt ervoor dat de applicatie altijd voldoet aan de nieuwste beveiligingsrichtlijnen.
+__Praktische Case__
+: Stel je voor dat een bedrijf een cloudgebaseerde webapplicatie uitvoert op verschillende EC2-instances. Ze gebruiken AWS Systems Manager om regelmatig patches te implementeren, beveiligingsinstellingen te controleren, en de prestaties van hun infrastructuur in de gaten te houden. Dit vermindert handmatige fouten, verhoogt de uptime en zorgt ervoor dat de applicatie altijd voldoet aan de nieuwste beveiligingsrichtlijnen.
 AWS Session Manager
 
 
 __AWS Session Manager__ maakt veilige, gemakkelijke en auditeerbare verbindingen mogelijk naar instances zonder dat een SSH of RDP nodig is. Dit biedt een gemakkelijke manier om beheer op instances uit te voeren zonder directe netwerktoegang.
-Praktische Case
 
+__Praktische Case__
 Een IT-beheerder wil inloggen op een __EC2-instance__ om bepaalde systeeminstellingen te controleren zonder deze toegang via SSH te doen. Ze gebruiken __AWS Session Manager__ om verbinding te maken, wat __de veiligheid verhoogt__ omdat __geen open netwerkpoort nodig__ is.
 Vereisten voor __AWS Session Manager__
 
@@ -337,8 +339,8 @@ Een organisatie gebruikt __OpsCenter__ om automatisch incidenten te genereren wa
 
 __AWS Parameter Store__
 __AWS Systems Manager Parameter Store__ biedt veilige opslag voor configuratie-instellingen, zoals API-sleutels, wachtwoorden en andere gevoelige gegevens.
-Praktische Case
 
+__Praktische Case__
 Een ontwikkelaar slaat API-sleutels voor een externe service op in Parameter Store, zodat deze veilig kunnen worden opgehaald door EC2-instances zonder hardcoding van de sleutels in de applicatiecode.
 
 #### Key Features van AWS Parameter Store
@@ -492,37 +494,37 @@ __Rapportage en analyse:__
 
 ### 6 FinOps Domains & Capabilities
 
-Kostenbeheer:
+__Kostenbeheer:__
 : Het controleren van cloudkosten en het implementeren van strategieën om uitgaven te verminderen.
         Voorbeeld: 
         
         Een team gebruikt AWS Budgets om het maandelijks budget voor EC2-instances te monitoren.
 
-Kostenoptimalisatie:
+__Kostenoptimalisatie:__
 : Het identificeren van onnodige of niet-gebruikte cloudresources en het optimaliseren van het verbruik.
 Voorbeeld: 
         
         AWS Trusted Advisor wordt gebruikt om ongebruikte EBS-volumes te identificeren en deze op te schonen.
 
-Forecasting:
+__Forecasting:__
 : Het nauwkeurig voorspellen van toekomstige cloudkosten op basis van historisch verbruik.
 Voorbeeld: 
         
         Een bedrijf maakt gebruik van Cost Explorer om cloudkosten te voorspellen voor de komende maanden en deze op te nemen in hun budgetplanning.
 
-Cost Transparency:
+__Cost Transparency:__
 : Het creëren van volledige transparantie in cloudkosten door gedetailleerde rapporten en dashboards te bieden.
     Voorbeeld: 
         
         Het gebruik van AWS Cost Explorer om een gedetailleerd overzicht van alle kosten per service te verkrijgen.
 
-Governance:
+__Governance:__
 : Het afdwingen van beleid en controles voor het beheren van cloudkosten.
     Voorbeeld: 
         
         Het implementeren van tagging-standaarden in AWS zodat kosten eenvoudig kunnen worden toegewezen aan specifieke projecten.
 
-Collaboration:
+__Collaboration:__
 : Het bevorderen van samenwerking tussen technische, operationele en financiële teams om kosten te beheren.
 Voorbeeld: 
         
@@ -530,37 +532,37 @@ Voorbeeld:
 
 ### 6 FinOps Principles
 
-Teams zijn verantwoordelijk voor hun clouduitgaven:
+__Teams zijn verantwoordelijk voor hun clouduitgaven:__
         : Elke afdeling of team moet verantwoordelijk zijn voor zijn eigen cloudkosten.
         Voorbeeld: 
         
                 Het marketingteam beheert de kosten voor hun applicaties, terwijl de IT-afdeling verantwoordelijk is voor de serverkosten.
 
-Gebruik cloudkosten om zakelijke beslissingen te sturen:
+__Gebruik cloudkosten om zakelijke beslissingen te sturen:__
         : Cloudkosten moeten niet alleen worden gezien als een operationele kostenpost, maar als een strategisch hulpmiddel voor besluitvorming.
         Voorbeeld: 
 
                 Het besluit om een nieuwe feature te bouwen wordt genomen op basis van de kosten-voordelenanalyse van de cloudresources die nodig zijn.
 
-Beheer cloudkosten met behulp van inzichten en gegevens:
+__Beheer cloudkosten met behulp van inzichten en gegevens:__
         : Het analyseren van gedetailleerde kosten- en gebruiksdata om strategische keuzes te maken.
         Voorbeeld: 
         
                 Het gebruik van AWS Cost Explorer om inzicht te krijgen in welke services het meest kostenintensief zijn en waar besparingen mogelijk zijn.
 
-Maak cloudkosten zichtbaar en begrijpelijk voor alle teams:
+__Maak cloudkosten zichtbaar en begrijpelijk voor alle teams:__
         : Transparantie is cruciaal om ervoor te zorgen dat iedereen in de organisatie begrijpt hoe de cloudkosten zich verhouden tot de bedrijfsdoelen.
         Voorbeeld: 
                 
                 Het maken van visuele dashboards om alle teams te laten zien welke delen van de infrastructuur het meeste kosten.
 
-Optimaliseer het cloudverbruik:
+__Optimaliseer het cloudverbruik:__
         : Het voortdurend optimaliseren van cloudgebruik om onbenutte of inefficiënt toegewezen resources te verminderen.
         Voorbeeld: 
         
                 Het beëindigen van onbenutte EC2-instances om kosten te besparen.
 
-Gebruik een iteratief proces voor kostenbeheer:
+__Gebruik een iteratief proces voor kostenbeheer:__
         : Het proces van kostenbeheer moet continu worden geoptimaliseerd en aangepast aan veranderende behoeften.
         Voorbeeld: 
         
@@ -571,7 +573,7 @@ Gebruik een iteratief proces voor kostenbeheer:
 
 Het __AWS Billing Dashboard__ biedt een overzicht van je huidige kosten en het gebruik van AWS-services. Het biedt gebruikers inzicht in hun maandelijkse uitgaven en stelt ze in staat om hun facturering te monitoren.
 
-Praktische Case
+__Praktische Case__
 : Een organisatie gebruikt het AWS Billing Dashboard om de maandelijkse kosten te monitoren en te zorgen dat ze binnen het budget blijven voor hun AWS-omgeving.
 
 
@@ -579,7 +581,7 @@ Praktische Case
 __AWS Cost Explorer__
 AWS Cost Explorer helpt gebruikers bij het visualiseren van cloudkosten en gebruik. Het biedt gedetailleerde rapporten en filters die helpen bij het begrijpen van kosten, verbruik en trends.
 
-Praktische Case
+__Praktische Case__
 : Een bedrijf gebruikt AWS Cost Explorer om historische kosten te analyseren en de impact van verschillende services op hun maandelijkse uitgaven te begrijpen.
 CloudWatch Billing Alarms
 
