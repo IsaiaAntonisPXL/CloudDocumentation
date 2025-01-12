@@ -1,9 +1,90 @@
-# Cloud samenvatting
+<!-- vscode-markdown-toc -->
+* 1. [Opfrissing cloud concepten](#Opfrissingcloudconcepten)
+	* 1.1. [AWS layers](#AWSlayers)
+	* 1.2. [Foundation services](#Foundationservices)
+		* 1.2.1. [1. Compute](#Compute)
+		* 1.2.2. [1.1 Common used compute services and their use cases](#Commonusedcomputeservicesandtheirusecases)
+		* 1.2.3. [2. Storage](#Storage)
+		* 1.2.4. [2.1 Common used storage services and their use cases](#Commonusedstorageservicesandtheirusecases)
+		* 1.2.5. [3. Network](#Network)
+		* 1.2.6. [3.1 Common used network services and their use cases](#Commonusednetworkservicesandtheirusecases)
+		* 1.2.7. [4. Security](#Security)
+		* 1.2.8. [4.1 Common used security services and their use cases](#Commonusedsecurityservicesandtheirusecases)
+	* 1.3. [Platform services](#Platformservices)
+		* 1.3.1. [1. Regions](#Regions)
+		* 1.3.2. [2. Availability Zones (AZs)](#AvailabilityZonesAZs)
+		* 1.3.3. [3. Edge Locations](#EdgeLocations)
+* 2. [System tools](#Systemtools)
+		* 2.1. [1. Maintenance Windows](#MaintenanceWindows)
+		* 2.2. [2. Compliance](#Compliance)
+		* 2.3. [3. Fleet Manager](#FleetManager)
+		* 2.4. [4. Incident Manager](#IncidentManager)
+		* 2.5. [5. State Manager](#StateManager)
+	* 2.1. [AWS Systems Manager Service](#AWSSystemsManagerService)
+		* 2.1.1. [Advanced Features van AWS Session Manager](#AdvancedFeaturesvanAWSSessionManager)
+	* 2.2. [AWS OpsCenter](#AWSOpsCenter)
+		* 2.2.1. [Key Features van AWS Parameter Store](#KeyFeaturesvanAWSParameterStore)
+		* 2.2.2. [AWS Automation Runbook](#AWSAutomationRunbook)
+	* 2.3. [AWS Automation Runbook binnen het IaC Landschap](#AWSAutomationRunbookbinnenhetIaCLandschap)
+* 3. [Finops tools](#Finopstools)
+	* 3.1. [Algemene Concepten in FinOps](#AlgemeneConcepteninFinOps)
+		* 3.1.1. [1. FinOps](#FinOps)
+		* 3.1.2. [2. AWS Budgets](#AWSBudgets)
+		* 3.1.3. [3. Spot Instances](#SpotInstances)
+		* 3.1.4. [4. Reserved Instances](#ReservedInstances)
+	* 3.2. [3 Eigenschappen van Cloud FinOps](#EigenschappenvanCloudFinOps)
+	* 3.3. [4 Elementen van de FinOps Tooling Stack](#ElementenvandeFinOpsToolingStack)
+	* 3.4. [6 FinOps Domains & Capabilities](#FinOpsDomainsCapabilities)
+	* 3.5. [6 FinOps Principles](#FinOpsPrinciples)
+	* 3.6. [AWS Billing Dashboard](#AWSBillingDashboard)
+	* 3.7. [EC2 Instances voor FinOps](#EC2InstancesvoorFinOps)
+	* 3.8. [4 Strategieën voor Kostenreductie](#StrategienvoorKostenreductie)
+	* 3.9. [AWS Trusted Advisor](#AWSTrustedAdvisor)
+* 4. [DevOps tools in de cloud](#DevOpstoolsindecloud)
+	* 4.1. [__Concepten in Continuous Integration (CI) en Continuous Delivery (CD)__](#ConcepteninContinuousIntegrationCIenContinuousDeliveryCD__)
+	* 4.2. [__DevOps Culture__](#DevOpsCulture__)
+	* 4.3. [Verschillende DevOps Practices](#VerschillendeDevOpsPractices)
+	* 4.4. [__Voordelen van DevOps volgens AWS__](#VoordelenvanDevOpsvolgensAWS__)
+	* 4.5. [__5 Fasen van Release en Monitor__](#FasenvanReleaseenMonitor__)
+	* 4.6. [__Vergelijking van AWS CodeBuild en Jenkins__](#VergelijkingvanAWSCodeBuildenJenkins__)
+* 5. [Container service in de cloud](#Containerserviceindecloud)
+	* 5.1. [Concepten binnen AWS Containers: ECR, Fargate, ECS, EKS](#ConceptenbinnenAWSContainers:ECRFargateECSEKS)
+	* 5.2. [ECS (Elastic Container Service)](#ECSElasticContainerService)
+		* 5.2.1. [Componenten van ECS](#ComponentenvanECS)
+	* 5.3. [Verschillen tussen ECS en EKS](#VerschillentussenECSenEKS)
+		* 5.3.1. [__Criteria voor het kiezen tussen Fargate, EKS en ECS__](#CriteriavoorhetkiezentussenFargateEKSenECS__)
+		* 5.3.2. [__Revisions en Versioning binnen ECS Deployments__](#RevisionsenVersioningbinnenECSDeployments__)
+		* 5.3.3. [__Verschil met EKS/Kubernetes__](#VerschilmetEKSKubernetes__)
+* 6. [Observability in the cloud](#Observabilityinthecloud)
+	* 6.1. [Concepten rond observability](#Conceptenrondobservability)
+* 7. [Implementatie van Observability (volgens AWS)](#ImplementatievanObservabilityvolgensAWS)
+	* 7.1. [6 Elementen voor Modern Application Development](#ElementenvoorModernApplicationDevelopment)
+	* 7.2. [Proactieve- en Reactieve Operations](#Proactieve-enReactieveOperations)
+	* 7.3. [Niveaus van Observability](#NiveausvanObservability)
+	* 7.4. [Pijlers van Observability](#PijlersvanObservability)
+	* 7.5. [Voordelen van Application Observability](#VoordelenvanApplicationObservability)
+* 8. [Cloudformation en Automation](#CloudformationenAutomation)
+	* 8.1. [Voordelen van Configuration Management](#VoordelenvanConfigurationManagement)
+	* 8.2. [Automatische Configuratie van EC2-instanties](#AutomatischeConfiguratievanEC2-instanties)
+	* 8.3. [Voor- en Nadelen van een Standalone Configuration Server](#Voor-enNadelenvaneenStandaloneConfigurationServer)
+	* 8.4. [Infrastructuur Resource Lifecycle](#InfrastructuurResourceLifecycle)
+	* 8.5. [Cloud Deployment Challenges](#CloudDeploymentChallenges)
+	* 8.6. [Technologieën voor Geautomatiseerde Deployments binnen AWS](#TechnologienvoorGeautomatiseerdeDeploymentsbinnenAWS)
+	* 8.7. [CloudFormation in het IaC Landschap](#CloudFormationinhetIaCLandschap)
+	* 8.8. [CloudFormation Template Structuur](#CloudFormationTemplateStructuur)
+	* 8.9. [cfn-signal, WaitCondition en WaitConditionHandle](#cfn-signalWaitConditionenWaitConditionHandle)
 
-## Opfrissing cloud concepten
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc --># Cloud samenvatting
+
+
+##  1. <a name='Opfrissingcloudconcepten'></a>Opfrissing cloud concepten
 
 ![title](images/4layersaws.png)
-### AWS layers
+###  1.1. <a name='AWSlayers'></a>AWS layers
 AWS bestaat uit 4 lagen,
 
 1. __Infrastructure__
@@ -47,11 +128,11 @@ Deze bovenste laag biedt eindgebruikersgerichte diensten zoals virtuele desktops
     Voorbeeld: Voeg loginfunctionaliteit toe aan je app met Cognito.
     Collaboration: Tools zoals WorkSpaces voor samenwerking en virtuele werkplekken.
     Voorbeeld: Stel werknemers in staat op afstand te werken via virtuele desktops.
-### Foundation services
+###  1.2. <a name='Foundationservices'></a>Foundation services
 
-#### 1. Compute
+####  1.2.1. <a name='Compute'></a>1. Compute
 ![title](images/foundation_compute.png)
-#### 1.1 Common used compute services and their use cases
+####  1.2.2. <a name='Commonusedcomputeservicesandtheirusecases'></a>1.1 Common used compute services and their use cases
 1. __Amazon EC2 (Elastic Compute Cloud)__
 
 A service that provides resizable virtual servers (instances) in the cloud.
@@ -91,9 +172,9 @@ __Use Cases__:
     Managing multi-cloud or hybrid Kubernetes clusters.
 
 
-#### 2. Storage
+####  1.2.3. <a name='Storage'></a>2. Storage
 ![title](images/foundation_storage.png)
-#### 2.1 Common used storage services and their use cases
+####  1.2.4. <a name='Commonusedstorageservicesandtheirusecases'></a>2.1 Common used storage services and their use cases
 Here are the top 4 commonly used AWS Storage Services and their use cases:
 1. __Amazon S3 (Simple Storage Service)__
 
@@ -137,9 +218,9 @@ __Use Cases__:
     Data retention: Retaining data for regulatory or historical purposes at a low cost.
 
 
-#### 3. Network
+####  1.2.5. <a name='Network'></a>3. Network
 ![title](images/foundation_network.png)
-#### 3.1 Common used network services and their use cases
+####  1.2.6. <a name='Commonusednetworkservicesandtheirusecases'></a>3.1 Common used network services and their use cases
 
 1. __Amazon VPC (Virtual Private Cloud)__
 
@@ -180,9 +261,9 @@ __Use Cases__:
     Domain management: Registering and managing domains directly through AWS.
     Routing traffic: Directing traffic to endpoints (e.g., EC2 instances, S3 buckets) based on routing policies like geolocation or latency.
     Failover: Automatically redirecting traffic during outages to backup servers.
-#### 4. Security
+####  1.2.7. <a name='Security'></a>4. Security
 ![title](images/foundation_security.png)
-#### 4.1 Common used security services and their use cases
+####  1.2.8. <a name='Commonusedsecurityservicesandtheirusecases'></a>4.1 Common used security services and their use cases
 
 1. __AWS Identity and Access Management (IAM)__
 
@@ -213,8 +294,8 @@ __Use Cases__:
     Audit logging: Tracking changes to resources and identifying unauthorized access.
     Security analysis: Monitoring and investigating suspicious activities.
     Compliance reporting: Proving adherence to regulations by providing an activity history.
-### Platform services
-#### 1. Regions
+###  1.3. <a name='Platformservices'></a>Platform services
+####  1.3.1. <a name='Regions'></a>1. Regions
 
 Een "Region" is een geografische locatie waar AWS datacenters (Availability Zones) zijn gevestigd. Elke regio bestaat uit meerdere zones om hoge beschikbaarheid en fouttolerantie te garanderen.
 
@@ -232,7 +313,7 @@ __Voorbeeld__:
 
 __Use case:__ Het kiezen van een regio dicht bij klanten om snellere responstijden te realiseren.
 
-#### 2. Availability Zones (AZs)
+####  1.3.2. <a name='AvailabilityZonesAZs'></a>2. Availability Zones (AZs)
 
 Een regio bevat meerdere AZ's, die bestaan uit afzonderlijke datacenters met eigen stroom, koeling en netwerk. Ze zijn ontworpen om onafhankelijk te zijn, maar ook om met elkaar te communiceren via snelle verbindingen.
 
@@ -243,7 +324,7 @@ __Voorbeeld__:
     Een applicatie die gebruikmaakt van meerdere AZ's in de US East (N. Virginia) Region om downtime te voorkomen.
 __Use case:__ Het draaien van een database in twee AZ's met automatische failover voor hoge beschikbaarheid.
 
-#### 3. Edge Locations
+####  1.3.3. <a name='EdgeLocations'></a>3. Edge Locations
 
 Edge-locaties zijn datacenters die zich dicht bij eindgebruikers bevinden en worden gebruikt door AWS-diensten zoals Amazon CloudFront. Ze verbeteren de prestaties van applicaties door content dichter bij de gebruiker te brengen.
 
@@ -254,47 +335,47 @@ __Voorbeeld__:
     Een streamingplatform maakt gebruik van een edge-locatie in Tokyo om video's met lage latency te leveren aan kijkers in Japan.
 
 __Use case:__ Een internationaal bedrijf gebruikt edge-locaties om een wereldwijd publiek snel toegang te bieden tot statische en dynamische content.
-## System tools
+##  2. <a name='Systemtools'></a>System tools
 
 AWS Systems Manager is een krachtige service voor het beheren van de infrastructuur van AWS-cloudomgevingen. Het biedt een breed scala aan tools voor het beheren, bewaken en automatiseren van IT-operaties. Hieronder worden verschillende concepten en gerelateerde services binnen AWS Systems Manager besproken.
 Algemeen Concepten van AWS Systems Manager
 
-#### 1. Maintenance Windows
+####  2.1. <a name='MaintenanceWindows'></a>1. Maintenance Windows
 
 Dit is een geplande tijdsperiode waarin systeemonderhoud kan plaatsvinden zonder dat het invloed heeft op de gebruikerservaring of de werking van de service.
 Voorbeeld:
 
     Een organisatie plant onderhoud voor haar servers in een Maintenance Window van 00:00 tot 04:00, zodat er minimale impact is op de productieomgeving.
 
-#### 2. Compliance
+####  2.2. <a name='Compliance'></a>2. Compliance
 
 Compliance in AWS Systems Manager houdt in dat je ervoor zorgt dat je infrastructuur voldoet aan de specifieke standaarden en beleidsregels die van toepassing zijn op je omgeving.
 Voorbeeld: 
 
     Het automatisch controleren of alle instances voldoen aan de beveiligingsrichtlijnen, zoals het gebruik van versleutelde volumes en het uitvoeren van beveiligingspatches.
 
-#### 3. Fleet Manager
+####  2.3. <a name='FleetManager'></a>3. Fleet Manager
 
 Deze service biedt een gecentraliseerde interface voor het beheren van meerdere instances over verschillende AWS-regio's en helpt bij het volgen van de status en prestaties.
 Voorbeeld: 
 
     Een beheerder gebruikt Fleet Manager om een overzicht te krijgen van alle EC2-instances, hun status en recent uitgevoerde taken.
 
-#### 4. Incident Manager
+####  2.4. <a name='IncidentManager'></a>4. Incident Manager
 
 Een tool die helpt bij het identificeren, onderzoeken en herstellen van incidenten in de AWS-omgeving. Het biedt een gestandaardiseerd proces voor incidentbeheer.
 Voorbeeld: 
 
     Wanneer er een storing optreedt in een productieomgeving, kan Incident Manager helpen bij het coördineren van de respons, zodat het probleem snel wordt opgelost.
 
-#### 5. State Manager
+####  2.5. <a name='StateManager'></a>5. State Manager
 
 State Manager helpt bij het automatiseren van configuratiebeheer door ervoor te zorgen dat de gewenste configuratie op een systeem aanwezig is.
 Voorbeeld: 
     
     Het automatisch configureren van alle instances in een bepaalde regio om altijd een specifieke versie van een applicatie uit te voeren.
 
-### AWS Systems Manager Service
+###  2.1. <a name='AWSSystemsManagerService'></a>AWS Systems Manager Service
 
 
 AWS Systems Manager is een uitgebreide beheeroplossing voor AWS-cloudinfrastructuren, waarmee je automatisch je virtuele servers kunt beheren, configureren en schalen. Het biedt tools zoals automation, compliance monitoring, patchbeheer en incidentmanagement om je IT-infrastructuur efficiënt te beheren.
@@ -315,7 +396,7 @@ Vereisten voor __AWS Session Manager__
     Systeemvereisten: AWS Systems Manager Agent (SSM Agent) moet geïnstalleerd en draaiende zijn op de instance.
     Beveiliging: Er moeten de juiste permissies worden gedefinieerd in AWS IAM voor het gebruik van Session Manager.
 
-#### Advanced Features van AWS Session Manager
+####  2.1.1. <a name='AdvancedFeaturesvanAWSSessionManager'></a>Advanced Features van AWS Session Manager
 ##### 1. Port Forwarding:
 
 Hiermee kun je netwerkpoorten van een EC2-instance via een beveiligde tunnel doorsturen.
@@ -330,7 +411,7 @@ Voorbeeld:
     
         Een organisatie configureert loggen om te controleren welke acties beheerders uitvoeren op de EC2-instances via Session Manager.
 
-### AWS OpsCenter
+###  2.2. <a name='AWSOpsCenter'></a>AWS OpsCenter
 
 
 __OpsCenter__ helpt bij het organiseren van incidentbeheer binnen AWS, door het automatisch creëren en beheren van incidenten, ook wel __"OpsItems"__ genoemd. Het biedt teams een centrale plaats om problemen op te lossen en de status bij te houden.
@@ -346,7 +427,7 @@ __Praktische Case__
 
 : Een ontwikkelaar slaat API-sleutels voor een externe service op in Parameter Store, zodat deze veilig kunnen worden opgehaald door EC2-instances zonder hardcoding van de sleutels in de applicatiecode.
 
-#### Key Features van AWS Parameter Store
+####  2.2.1. <a name='KeyFeaturesvanAWSParameterStore'></a>Key Features van AWS Parameter Store
 
 __Veilige opslag van gegevens__:
 Voorbeeld: 
@@ -383,7 +464,7 @@ Voorbeeld:
 
     Een parameter die naar een andere parameter verwijst, zoals de naam van een database.
 
-#### AWS Automation Runbook
+####  2.2.2. <a name='AWSAutomationRunbook'></a>AWS Automation Runbook
 
 
 __AWS Automation Runbook__ is een set geautomatiseerde stappen die worden uitgevoerd om routinematige of complexe taken binnen AWS te voltooien. Runbooks kunnen worden geconfigureerd om automatisch actie te ondernemen op basis van een trigger.
@@ -413,43 +494,43 @@ __Kosten__:
         
         Het uitvoeren van veel automatisering kan de kosten verhogen afhankelijk van de vereiste resources.
 
-### AWS Automation Runbook binnen het IaC Landschap
+###  2.3. <a name='AWSAutomationRunbookbinnenhetIaCLandschap'></a>AWS Automation Runbook binnen het IaC Landschap
 Vergelijking met Andere Frameworks
 
 Automation Runbooks in AWS kunnen worden vergeleken met Infrastructure-as-Code (IaC) tools zoals Terraform of CloudFormation. Het verschil is dat Runbooks specifiek gericht zijn op het automatiseren van operationele taken, terwijl IaC zich richt op het definiëren van infrastructuur en resources.
-## Finops tools
+##  3. <a name='Finopstools'></a>Finops tools
 
 Cloud FinOps (Financial Operations) is het raamwerk dat bedrijven helpt om cloudkosten efficiënt te beheren, te optimaliseren en te voorspellen. Het combineert de technische en financiële kant van cloudinfrastructuren en richt zich op samenwerking tussen teams om een beter begrip van kosten en waarde te verkrijgen.
-### Algemene Concepten in FinOps
-#### 1. FinOps
+###  3.1. <a name='AlgemeneConcepteninFinOps'></a>Algemene Concepten in FinOps
+####  3.1.1. <a name='FinOps'></a>1. FinOps
 
 FinOps is een set van best practices, processen en tools die bedrijven helpen bij het beheren van hun cloudkosten, terwijl ze de waarde van de cloud optimaliseren. Het zorgt voor samenwerking tussen de technische, financiële en operationele teams.
     __Voorbeeld:__ 
     
     Een bedrijf implementeert FinOps om realtime kosten te volgen, verantwoording af te leggen en samenwerking tussen teams te verbeteren, zodat kostenbeheersing en waarde-maximalisatie hand in hand gaan.
 
-#### 2. AWS Budgets
+####  3.1.2. <a name='AWSBudgets'></a>2. AWS Budgets
 
 AWS Budgets stelt je in staat om budgetten in te stellen voor cloudkosten en verbruik. Het biedt waarschuwingen wanneer de werkelijke uitgaven of het verbruik een ingesteld limiet overschrijden.
     __Voorbeeld:__ 
     
     Een bedrijf stelt een maandelijks budget in voor zijn AWS-diensten en ontvangt een melding als het 80% van het budget overschrijdt.
 
-#### 3. Spot Instances
+####  3.1.3. <a name='SpotInstances'></a>3. Spot Instances
 
 Spot Instances zijn tijdelijke EC2-instances die gebruik maken van ongebruikte capaciteit van AWS tegen lagere prijzen.
     __Voorbeeld:__ 
     
     Een bedrijf draait een batchverwerkingsprogramma op Spot Instances om de kosten drastisch te verlagen, zolang de processen niet kritisch zijn voor tijdige uitvoering.
 
-#### 4. Reserved Instances
+####  3.1.4. <a name='ReservedInstances'></a>4. Reserved Instances
 
 Reserved Instances (RI) zijn vooraf betaalde, langdurige instances die aanzienlijke kortingen bieden ten opzichte van on-demand prijzen.
     __Voorbeeld:__ 
     
     Een organisatie koopt Reserved Instances voor een periode van drie jaar om zijn servercapaciteit te verlagen en kosten te besparen voor zijn langdurige workload.
 
-### 3 Eigenschappen van Cloud FinOps
+###  3.2. <a name='EigenschappenvanCloudFinOps'></a>3 Eigenschappen van Cloud FinOps
 
 __Realtime kostenbeheer__:
         Cloud FinOps zorgt ervoor dat je continu inzicht hebt in de werkelijke uitgaven in de cloud. Dit stelt bedrijven in staat om snel in te grijpen bij onverwachte kostenstijgingen.
@@ -469,7 +550,7 @@ __Wendbaarheid en voorspelbaarheid:__
         
         Een startup gebruikt historische gegevens en gedetailleerde analyses om de cloudkosten te voorspellen voor de komende drie maanden.
 
-### 4 Elementen van de FinOps Tooling Stack
+###  3.3. <a name='ElementenvandeFinOpsToolingStack'></a>4 Elementen van de FinOps Tooling Stack
 
 __Kosten- en gebruiksgegevens:__
          Verzamelen van gedetailleerde gegevens over het verbruik van cloudresources en de bijbehorende kosten.
@@ -495,7 +576,7 @@ __Rapportage en analyse:__
         
         Het gebruik van AWS Cost Explorer om maandelijkse rapporten te genereren en kosten per afdeling te analyseren.
 
-### 6 FinOps Domains & Capabilities
+###  3.4. <a name='FinOpsDomainsCapabilities'></a>6 FinOps Domains & Capabilities
 
 __Kostenbeheer:__
 : Het controleren van cloudkosten en het implementeren van strategieën om uitgaven te verminderen.
@@ -533,7 +614,7 @@ Voorbeeld:
         
         Regelmatige vergaderingen tussen het ontwikkelteam en het financiële team om te bespreken welke cloudservices geoptimaliseerd kunnen worden.
 
-### 6 FinOps Principles
+###  3.5. <a name='FinOpsPrinciples'></a>6 FinOps Principles
 
 __Teams zijn verantwoordelijk voor hun clouduitgaven:__
         : Elke afdeling of team moet verantwoordelijk zijn voor zijn eigen cloudkosten.
@@ -571,7 +652,7 @@ __Gebruik een iteratief proces voor kostenbeheer:__
         
                 Een bedrijf evalueert elke maand zijn cloudkosten en past het budget aan op basis van veranderende verbruikspatronen.
 
-### AWS Billing Dashboard
+###  3.6. <a name='AWSBillingDashboard'></a>AWS Billing Dashboard
 
 
 Het __AWS Billing Dashboard__ biedt een overzicht van je huidige kosten en het gebruik van AWS-services. Het biedt gebruikers inzicht in hun maandelijkse uitgaven en stelt ze in staat om hun facturering te monitoren.
@@ -611,7 +692,7 @@ __Meerdere meldingsopties:__
         
         Een melding wordt gestuurd via e-mail en SMS wanneer de cloudkosten een bepaalde drempel bereiken.
 
-### EC2 Instances voor FinOps
+###  3.7. <a name='EC2InstancesvoorFinOps'></a>EC2 Instances voor FinOps
 __Categorieën:__
 
 __On-Demand Instances:__
@@ -622,7 +703,7 @@ __Reserved Instances:__
         : Betaal vooraf voor een langdurig gebruik van EC2-instances en krijg korting op de kosten.
         Voorbeeld: Een bedrijf koopt reserved instances om kosten te besparen voor continu draaiende workloads.
 
-### 4 Strategieën voor Kostenreductie
+###  3.8. <a name='StrategienvoorKostenreductie'></a>4 Strategieën voor Kostenreductie
 
 __Gebruik Reserved Instances:__
         Voorbeeld: 
@@ -644,7 +725,7 @@ __Schaal dynamisch op basis van vraag:__
         
         Een webapplicatie die automatisch schaling van EC2-instances gebruikt om de kosten te optimaliseren op basis van verkeer.
 
-### AWS Trusted Advisor
+###  3.9. <a name='AWSTrustedAdvisor'></a>AWS Trusted Advisor
 __Key Features:__
 
 __Kostenoptimalisatie:__
@@ -666,11 +747,11 @@ __Compliance-controle:__
         Voorbeeld: 
         
         AWS Trusted Advisor helpt bij het waarborgen van naleving van best practices, zoals het versleutelen van gegevens in rust.
-## DevOps tools in de cloud
+##  4. <a name='DevOpstoolsindecloud'></a>DevOps tools in de cloud
 
 __DevOps__ is een cultuur en een set van praktijken die erop gericht zijn om de samenwerking tussen ontwikkelings- en operationele teams te verbeteren, zodat software sneller en efficiënter kan worden geleverd.
 
-### __Concepten in Continuous Integration (CI) en Continuous Delivery (CD)__
+###  4.1. <a name='ConcepteninContinuousIntegrationCIenContinuousDeliveryCD__'></a>__Concepten in Continuous Integration (CI) en Continuous Delivery (CD)__
 __1. Continuous Integration (CI)__
 
 Continuous Integration is het proces waarbij ontwikkelaars regelmatig (meestal meerdere keren per dag) code integreren in een gedeelde repository. Elke integratie wordt vervolgens geautomatiseerd getest.
@@ -693,7 +774,7 @@ Continuous Deployment is het proces waarbij elke succesvolle wijziging automatis
     
     Na elke succesvolle commit naar AWS CodeCommit wordt de code automatisch gedeployed naar de productieomgeving via AWS CodeDeploy.
 
-### __DevOps Culture__
+###  4.2. <a name='DevOpsCulture__'></a>__DevOps Culture__
 __Eigenschappen van DevOps Culture__
 
 __Samenwerking en Communicatie:__
@@ -714,7 +795,7 @@ __Automatisering:__
         
         Automatisering van builds en tests via AWS CodeBuild zorgt ervoor dat code snel en betrouwbaar kan worden gepusht naar productie.
 
-### Verschillende DevOps Practices
+###  4.3. <a name='VerschillendeDevOpsPractices'></a>Verschillende DevOps Practices
 __1. Automated Testing__
 
 Het uitvoeren van geautomatiseerde tests om ervoor te zorgen dat code voldoet aan de kwaliteitsnormen voordat het naar productie wordt gepusht.
@@ -743,7 +824,7 @@ Het verbeteren van de communicatie en samenwerking tussen teams, wat helpt bij h
     
     Teams gebruiken chattools zoals Slack om feedback en waarschuwingen van AWS-services snel te ontvangen.
 
-### __Voordelen van DevOps volgens AWS__
+###  4.4. <a name='VoordelenvanDevOpsvolgensAWS__'></a>__Voordelen van DevOps volgens AWS__
 
 __Snellere levering van software:__
          Door het proces van het bouwen, testen en implementeren van software te automatiseren, kunnen teams sneller en efficiënter software leveren.
@@ -769,7 +850,7 @@ __Betrouwbaardere software:__
         
         AWS X-Ray helpt bij het identificeren van prestatieproblemen en fouten in de productieomgeving, zodat ze snel kunnen worden opgelost.
 
-### __5 Fasen van Release en Monitor__
+###  4.5. <a name='FasenvanReleaseenMonitor__'></a>__5 Fasen van Release en Monitor__
 __1. Plan:__
 
 Het plannen van de features en wijzigingen die moeten worden ontwikkeld en uitgerold.
@@ -810,7 +891,7 @@ Het bewaken van de prestaties en de gezondheid van de applicatie in productie.
     
     AWS CloudWatch wordt gebruikt om de prestaties van de applicatie in real-time te monitoren en eventuele problemen op te sporen.
 
-### __Vergelijking van AWS CodeBuild en Jenkins__
+###  4.6. <a name='VergelijkingvanAWSCodeBuildenJenkins__'></a>__Vergelijking van AWS CodeBuild en Jenkins__
 
 __AWS CodeBuild:__
         AWS CodeBuild is een volledig beheerde build-service die code bouwt, test en deployt zonder de noodzaak van servers.
@@ -825,8 +906,8 @@ __Jenkins:__
 
 __Praktische Case:__
         Jenkins wordt vaak gebruikt in omgevingen waar volledige controle over de serverconfiguratie vereist is, terwijl AWS CodeBuild eenvoudiger is voor teams die geen servers willen beheren.
-## Container service in de cloud
-### Concepten binnen AWS Containers: ECR, Fargate, ECS, EKS
+##  5. <a name='Containerserviceindecloud'></a>Container service in de cloud
+###  5.1. <a name='ConceptenbinnenAWSContainers:ECRFargateECSEKS'></a>Concepten binnen AWS Containers: ECR, Fargate, ECS, EKS
 __1. ECR (Elastic Container Registry)__
 
 __Amazon Elastic Container Registry (ECR)__ is een volledig beheerde Docker container registry service van AWS, waarmee je containers kunt opslaan, beheren en delen.
@@ -855,8 +936,8 @@ __Een manifest__ is een JSON- of YAML-bestand dat configuratie-instellingen en s
     
     Een manifest voor ECS kan specificeren welke Docker-image uit ECR moet worden gehaald en welke CPU- en geheugenspecificaties vereist zijn voor de container.
 
-### ECS (Elastic Container Service)
-#### Componenten van ECS
+###  5.2. <a name='ECSElasticContainerService'></a>ECS (Elastic Container Service)
+####  5.2.1. <a name='ComponentenvanECS'></a>Componenten van ECS
 
 __ECS Cluster:__
          Een cluster is een verzameling EC2-instances of Fargate-instanties waarop containers worden uitgevoerd.
@@ -882,7 +963,7 @@ __Service:__
         
     Een ECS-service wordt gebruikt om een webapplicatie altijd beschikbaar te houden door de containers automatisch te schalen op basis van vraag.
 
-### Verschillen tussen ECS en EKS
+###  5.3. <a name='VerschillentussenECSenEKS'></a>Verschillen tussen ECS en EKS
 __1. ECS (Elastic Container Service)__
 
 ECS is een beheerde container-orchestratie service die volledig door AWS wordt beheerd. Je hebt de mogelijkheid om containers te draaien op EC2-instances of Fargate, zonder dat je zelf clusterbeheer hoeft te doen.
@@ -901,7 +982,7 @@ __Vergelijking:__
 __ECS:__ Geschikt voor gebruikers die eenvoudiger containerbeheer willen zonder in de complexiteit van Kubernetes te duiken.
 __EKS:__ Geschikt voor gebruikers die Kubernetes willen gebruiken voor containerbeheer met de extra configuratiemogelijkheden, maar wel de voordelen van een beheerde service van AWS.
 
-#### __Criteria voor het kiezen tussen Fargate, EKS en ECS__
+####  5.3.1. <a name='CriteriavoorhetkiezentussenFargateEKSenECS__'></a>__Criteria voor het kiezen tussen Fargate, EKS en ECS__
 __1. Fargate:__
 
 Wanneer te kiezen: Als je geen infrastructuurbeheer wilt en je je puur wilt concentreren op het draaien van containers zonder de onderliggende servers te beheren.
@@ -923,19 +1004,19 @@ Wanneer te kiezen: Als je Kubernetes vereist voor containerorkestratie of als je
     
     Een organisatie met meerdere microservices die Kubernetes al gebruikt, zou EKS gebruiken om Kubernetes-clusters te beheren zonder infrastructuurbeheertaken.
 
-#### __Revisions en Versioning binnen ECS Deployments__
+####  5.3.2. <a name='RevisionsenVersioningbinnenECSDeployments__'></a>__Revisions en Versioning binnen ECS Deployments__
 
 In ECS worden task definitions gebruikt om container-configuraties te definiëren, en elke keer dat een wijziging in een task definition wordt doorgevoerd, wordt een nieuwe revision van de task definition aangemaakt. Dit stelt je in staat om verschillende versies van je containers te beheren en rollbacks uit te voeren als dat nodig is.
 
     Voorbeeld: Als je een nieuwe versie van je applicatie hebt gebouwd en een nieuwe task definition hebt aangemaakt met een andere Docker-image, wordt er een nieuwe revision aangemaakt. Als een update mislukt, kun je eenvoudig terugrollen naar de vorige revision.
 
-#### __Verschil met EKS/Kubernetes__
+####  5.3.3. <a name='VerschilmetEKSKubernetes__'></a>__Verschil met EKS/Kubernetes__
 
 In Kubernetes, via Deployments, kun je versies beheren met behulp van replica sets en rolling updates. Kubernetes biedt een gedetailleerdere controle over de versie en de uitrolstrategieën. Dit vereist echter meer configuratie en kennis van Kubernetes zelf.
 
     Voorbeeld: In Kubernetes zou je een Deployment gebruiken om de versie van een pod te beheren. Als je een nieuwe versie wilt uitrollen, maak je een nieuwe versie van de Deployment en Kubernetes zorgt voor een geleidelijke uitrol zonder downtime.
-## Observability in the cloud
-### Concepten rond observability
+##  6. <a name='Observabilityinthecloud'></a>Observability in the cloud
+###  6.1. <a name='Conceptenrondobservability'></a>Concepten rond observability
 __1. Operational Model__
 
 Het operationele model beschrijft de manier waarop een organisatie haar IT-systemen beheert, waaronder monitoring, incidentbeheer, en de implementatie van best practices voor operationele efficiëntie.
@@ -999,7 +1080,7 @@ __9. Circuit Breakers__
     
     Een microservice die afhankelijk is van een externe API kan een circuit breaker implementeren om te voorkomen dat verzoeken worden verzonden als de API tijdelijk niet beschikbaar is.
 
-## Implementatie van Observability (volgens AWS)
+##  7. <a name='ImplementatievanObservabilityvolgensAWS'></a>Implementatie van Observability (volgens AWS)
 __3 Veranderingen die nodig zijn om Observability te implementeren__
 
 __Verzamelen van de juiste gegevens:__
@@ -1020,7 +1101,7 @@ __Probleemoplossing en actie:__
         
         Door observability kun je snel zien dat de responstijd van je API is verhoogd en actie ondernemen door de belasting op de servers te verminderen.
 
-### 6 Elementen voor Modern Application Development
+###  7.1. <a name='ElementenvoorModernApplicationDevelopment'></a>6 Elementen voor Modern Application Development
 
 __Cloud Native:__
     Het ontwikkelen van applicaties die ontworpen zijn voor de cloud, waarbij ze profiteren van schaalbaarheid, veerkracht en flexibiliteit.
@@ -1062,7 +1143,7 @@ Usecase:
         
         Een fintech-applicatie implementeert encryptie en IAM-beleid via AWS om te zorgen voor veilige toegang tot gevoelige klantinformatie.
 
-### Proactieve- en Reactieve Operations
+###  7.2. <a name='Proactieve-enReactieveOperations'></a>Proactieve- en Reactieve Operations
 
 __Proactieve Operations:__
     Proactieve operations omvatten het anticiperen op mogelijke problemen voordat ze zich voordoen, bijvoorbeeld door monitoring en performance-optimalisatie.
@@ -1076,7 +1157,7 @@ __Reactieve Operations:__
         
         Wanneer een server crasht, wordt automatisch een incident aangemaakt en wordt het probleem opgelost door het team via AWS Systems Manager.
 
-### Niveaus van Observability
+###  7.3. <a name='NiveausvanObservability'></a>Niveaus van Observability
 
 __Metrics:__
          Het verzamelen van kwantitatieve gegevens over systeemgedrag, zoals CPU-gebruik, geheugen of responstijd.
@@ -1099,7 +1180,7 @@ Usecase:
 
     Het gebruik van AWS X-Ray om een klanttransactie van begin tot eind te volgen en knelpunten te identificeren.
 
-### Pijlers van Observability
+###  7.4. <a name='PijlersvanObservability'></a>Pijlers van Observability
 
 __Monitoring:__
          Het continu volgen van systeemgedrag en prestaties.
@@ -1120,7 +1201,7 @@ __Tracing:__
 
     Het gebruik van AWS X-Ray voor end-to-end tracing van een klantbestelling.
 
-### Voordelen van Application Observability
+###  7.5. <a name='VoordelenvanApplicationObservability'></a>Voordelen van Application Observability
 
 __Snel Probleemoplossing:__
         Uitleg: Door snel inzicht te krijgen in systeemprestaties kunnen problemen sneller worden opgelost.
@@ -1139,7 +1220,7 @@ __Verhoogde Beschikbaarheid:__
         Voorbeeld: 
         
         Door observability in te stellen, kan een website automatisch reageren op verhoogd verkeer en schaalbare infrastructuur implementeren om downtime te voorkomen.
-## Cloudformation en Automation
+##  8. <a name='CloudformationenAutomation'></a>Cloudformation en Automation
 __1. Configuration Management__
 
 Configuration management is het proces van het beheren van de configuratie van infrastructuur en softwarecomponenten. Het zorgt ervoor dat de systemen consistent en controleerbaar zijn, zelfs wanneer ze op grote schaal worden beheerd.
@@ -1203,7 +1284,7 @@ Een stack policy is een set van regels die bepalen welke resources binnen een st
     
     Het toepassen van een stack policy om ervoor te zorgen dat een bepaalde S3-bucket niet wordt verwijderd wanneer de stack wordt bijgewerkt.
 
-### Voordelen van Configuration Management
+###  8.1. <a name='VoordelenvanConfigurationManagement'></a>Voordelen van Configuration Management
 
 __Consistentie en Herhaalbaarheid:__
     Uitleg: Met configuration management kunnen configuraties consistent worden toegepast op verschillende systemen. Dit zorgt ervoor dat er geen afwijkingen zijn tussen omgevingen en dat applicaties overal op dezelfde manier draaien.
@@ -1223,7 +1304,7 @@ __Schaalbaarheid:__
         
         Het snel opzetten van duizenden identieke EC2-instanties met behulp van tools zoals Ansible of Puppet.
 
-### Automatische Configuratie van EC2-instanties
+###  8.2. <a name='AutomatischeConfiguratievanEC2-instanties'></a>Automatische Configuratie van EC2-instanties
 
 __UserData:__
          Zoals eerder besproken, kun je via UserData scripts uitvoeren bij het opstarten van een EC2-instantie.
@@ -1243,7 +1324,7 @@ __AWS Systems Manager (SSM):__
         
     Het gebruik van SSM om automatisch patches toe te passen op EC2-instanties zonder handmatige interventie.
 
-### Voor- en Nadelen van een Standalone Configuration Server
+###  8.3. <a name='Voor-enNadelenvaneenStandaloneConfigurationServer'></a>Voor- en Nadelen van een Standalone Configuration Server
 __Voordelen:__
 
 __Centrale Configuratie:__
@@ -1282,14 +1363,14 @@ __Beveiligingsrisico’s:__
         
     Als de configuratieserver wordt gecompromitteerd, kunnen kwaadwillenden toegang krijgen tot gevoelige configuratie-instellingen.
 
-### Infrastructuur Resource Lifecycle
+###  8.4. <a name='InfrastructuurResourceLifecycle'></a>Infrastructuur Resource Lifecycle
 
 De infrastructuur resource lifecycle verwijst naar het proces van het creëren, onderhouden en uiteindelijk verwijderen van cloudresources. Het begint met de creatie van resources, gaat door met onderhoud en updates, en eindigt met de verwijdering van resources wanneer ze niet meer nodig zijn.
     Voorbeeld:
     
      Het lifecycleproces voor een EC2-instantie omvat het starten van de instantie, het updaten van de configuratie, en het beëindigen van de instantie wanneer deze niet langer nodig is.
 
-### Cloud Deployment Challenges
+###  8.5. <a name='CloudDeploymentChallenges'></a>Cloud Deployment Challenges
 
 __Complexiteit van Multi-Cloud Omgevingen:__
          Het beheren van een applicatie over meerdere cloudomgevingen kan leiden tot complexiteit en interoperabiliteitsproblemen.
@@ -1315,7 +1396,7 @@ __Kostenbeheersing:__
         
         Het optimaliseren van de keuze van EC2-instanties en opslagopties om onnodige kosten te vermijden.
 
-### Technologieën voor Geautomatiseerde Deployments binnen AWS
+###  8.6. <a name='TechnologienvoorGeautomatiseerdeDeploymentsbinnenAWS'></a>Technologieën voor Geautomatiseerde Deployments binnen AWS
 
 __AWS CloudFormation:__
          Een declarative tool voor het automatisch uitrollen van infrastructuur door het definiëren van resources in een template.
@@ -1334,7 +1415,7 @@ __AWS Elastic Beanstalk:__
 
         Voorbeeld: Het eenvoudig uitrollen van een Node.js-applicatie zonder infrastructuurbeheer.
 
-### CloudFormation in het IaC Landschap
+###  8.7. <a name='CloudFormationinhetIaCLandschap'></a>CloudFormation in het IaC Landschap
 
 CloudFormation is een infrastructuur als code (IaC)-tool die AWS-resources definieert in templates en deze automatisch implementeert. Het biedt native ondersteuning voor AWS en is volledig geïntegreerd met andere AWS-diensten.
 
@@ -1342,7 +1423,7 @@ __Vergelijking met Terraform en Pulumi:__
         __Voordelen van CloudFormation:__ Native integratie met AWS, robuuste beheeropties voor resources en stacks, en goede ondersteuning voor rollbacks.
         __Nadelen:__ Beperktere ondersteuning voor multi-cloud omgevingen en kan complex zijn bij grotere infrastructuren.
 
-### CloudFormation Template Structuur
+###  8.8. <a name='CloudFormationTemplateStructuur'></a>CloudFormation Template Structuur
 
 __Parameters:__
          Parameters zijn waarden die door de gebruiker worden ingevoerd wanneer de template wordt uitgevoerd. Ze kunnen worden gebruikt om resources dynamisch te configureren.
@@ -1362,7 +1443,7 @@ __Mappings:__
         
         Het gebruik van een mapping om verschillende AMI-typen te selecteren, afhankelijk van de regio waarin de stack wordt geïmplementeerd.
 
-### cfn-signal, WaitCondition en WaitConditionHandle
+###  8.9. <a name='cfn-signalWaitConditionenWaitConditionHandle'></a>cfn-signal, WaitCondition en WaitConditionHandle
 
 __cfn-signal:__
          Een commando dat door EC2-instanties wordt uitgevoerd om CloudFormation te informeren dat een resource succesvol is gestart of geïnstalleerd.
