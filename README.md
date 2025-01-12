@@ -1,6 +1,6 @@
 # Cloud samenvatting
 
-## opfrissing cloud concepten
+## Opfrissing cloud concepten
 
 ![title](images/4layersaws.png)
 ### AWS layers
@@ -252,3 +252,148 @@ __Voorbeeld__:
 
     Een streamingplatform maakt gebruik van een edge-locatie in Tokyo om video's met lage latency te leveren aan kijkers in Japan.
     Use case: Een internationaal bedrijf gebruikt edge-locaties om een wereldwijd publiek snel toegang te bieden tot statische en dynamische content.
+## System tools
+
+AWS Systems Manager is een krachtige service voor het beheren van de infrastructuur van AWS-cloudomgevingen. Het biedt een breed scala aan tools voor het beheren, bewaken en automatiseren van IT-operaties. Hieronder worden verschillende concepten en gerelateerde services binnen AWS Systems Manager besproken.
+Algemeen Concepten van AWS Systems Manager
+
+#### 1. Maintenance Windows
+
+Dit is een geplande tijdsperiode waarin systeemonderhoud kan plaatsvinden zonder dat het invloed heeft op de gebruikerservaring of de werking van de service.
+Voorbeeld:
+
+    Een organisatie plant onderhoud voor haar servers in een Maintenance Window van 00:00 tot 04:00, zodat er minimale impact is op de productieomgeving.
+
+#### 2. Compliance
+
+Compliance in AWS Systems Manager houdt in dat je ervoor zorgt dat je infrastructuur voldoet aan de specifieke standaarden en beleidsregels die van toepassing zijn op je omgeving.
+Voorbeeld: 
+
+    Het automatisch controleren of alle instances voldoen aan de beveiligingsrichtlijnen, zoals het gebruik van versleutelde volumes en het uitvoeren van beveiligingspatches.
+
+#### 3. Fleet Manager
+
+Deze service biedt een gecentraliseerde interface voor het beheren van meerdere instances over verschillende AWS-regio's en helpt bij het volgen van de status en prestaties.
+Voorbeeld: 
+
+    Een beheerder gebruikt Fleet Manager om een overzicht te krijgen van alle EC2-instances, hun status en recent uitgevoerde taken.
+
+#### 4. Incident Manager
+
+Een tool die helpt bij het identificeren, onderzoeken en herstellen van incidenten in de AWS-omgeving. Het biedt een gestandaardiseerd proces voor incidentbeheer.
+Voorbeeld: 
+
+    Wanneer er een storing optreedt in een productieomgeving, kan Incident Manager helpen bij het coördineren van de respons, zodat het probleem snel wordt opgelost.
+
+#### 5. State Manager
+
+State Manager helpt bij het automatiseren van configuratiebeheer door ervoor te zorgen dat de gewenste configuratie op een systeem aanwezig is.
+Voorbeeld: 
+    
+    Het automatisch configureren van alle instances in een bepaalde regio om altijd een specifieke versie van een applicatie uit te voeren.
+
+### AWS Systems Manager Service
+
+
+AWS Systems Manager is een uitgebreide beheeroplossing voor AWS-cloudinfrastructuren, waarmee je automatisch je virtuele servers kunt beheren, configureren en schalen. Het biedt tools zoals automation, compliance monitoring, patchbeheer en incidentmanagement om je IT-infrastructuur efficiënt te beheren.
+Praktische Case
+
+Stel je voor dat een bedrijf een cloudgebaseerde webapplicatie uitvoert op verschillende EC2-instances. Ze gebruiken AWS Systems Manager om regelmatig patches te implementeren, beveiligingsinstellingen te controleren, en de prestaties van hun infrastructuur in de gaten te houden. Dit vermindert handmatige fouten, verhoogt de uptime en zorgt ervoor dat de applicatie altijd voldoet aan de nieuwste beveiligingsrichtlijnen.
+AWS Session Manager
+
+
+__AWS Session Manager__ maakt veilige, gemakkelijke en auditeerbare verbindingen mogelijk naar instances zonder dat een SSH of RDP nodig is. Dit biedt een gemakkelijke manier om beheer op instances uit te voeren zonder directe netwerktoegang.
+Praktische Case
+
+Een IT-beheerder wil inloggen op een __EC2-instance__ om bepaalde systeeminstellingen te controleren zonder deze toegang via SSH te doen. Ze gebruiken __AWS Session Manager__ om verbinding te maken, wat __de veiligheid verhoogt__ omdat __geen open netwerkpoort nodig__ is.
+Vereisten voor __AWS Session Manager__
+
+    IAM-rollen: De juiste IAM-rollen moeten zijn toegewezen voor toegang tot de instances via Session Manager.
+    Systeemvereisten: AWS Systems Manager Agent (SSM Agent) moet geïnstalleerd en draaiende zijn op de instance.
+    Beveiliging: Er moeten de juiste permissies worden gedefinieerd in AWS IAM voor het gebruik van Session Manager.
+
+#### Advanced Features van AWS Session Manager
+##### 1. Port Forwarding:
+
+Hiermee kun je netwerkpoorten van een EC2-instance via een beveiligde tunnel doorsturen.
+Voorbeeld: 
+
+    Je kunt een lokale poort op je machine doorsturen naar een databasepoort op een EC2-instance zonder dat er een directe netwerkverbinding nodig is.
+
+##### 2. Session Logging:
+
+    Alle sessies kunnen worden vastgelegd voor auditen en troubleshooting.
+    Voorbeeld: 
+    
+        Een organisatie configureert loggen om te controleren welke acties beheerders uitvoeren op de EC2-instances via Session Manager.
+
+### AWS OpsCenter
+
+
+OpsCenter helpt bij het organiseren van incidentbeheer binnen AWS, door het automatisch creëren en beheren van incidenten, ook wel "OpsItems" genoemd. Het biedt teams een centrale plaats om problemen op te lossen en de status bij te houden.
+Praktische Case
+
+Een organisatie gebruikt OpsCenter om automatisch incidenten te genereren wanneer een kritieke service uitvalt, zoals een database die niet beschikbaar is. Het team kan het probleem snel identificeren en oplossen, met alle communicatie en logboeken verzameld in een enkel OpsItem.
+AWS Parameter Store
+
+
+AWS Systems Manager Parameter Store biedt veilige opslag voor configuratie-instellingen, zoals API-sleutels, wachtwoorden en andere gevoelige gegevens.
+Praktische Case
+
+Een ontwikkelaar slaat API-sleutels voor een externe service op in Parameter Store, zodat deze veilig kunnen worden opgehaald door EC2-instances zonder hardcoding van de sleutels in de applicatiecode.
+Key Features van AWS Parameter Store
+
+    Veilige opslag van gegevens:
+        Voorbeeld: API-sleutels worden versleuteld opgeslagen en kunnen alleen door geautoriseerde gebruikers worden opgehaald.
+
+    Versiebeheer:
+        Voorbeeld: Wanneer een API-sleutel wordt gewijzigd, kan de vorige versie behouden blijven zodat systemen die die sleutel nog gebruiken niet breken.
+
+    Integratie met andere AWS-services:
+        Voorbeeld: Parameter Store kan automatisch worden geïntegreerd met EC2-instances via IAM-rollen om de vereiste parameters op te halen.
+
+Private vs Public Parameters en References
+
+    Private Parameters:
+         Bevat gevoelige gegevens die versleuteld moeten worden opgeslagen.
+        Voorbeeld: Wachtwoorden voor databases.
+
+    Public Parameters:
+         Bevat niet-gevoelige gegevens die niet versleuteld hoeven te worden.
+        Voorbeeld: Een configuratie-instelling zoals de versie van een applicatie.
+
+    References:
+         Verwijzingen naar andere parameters die binnen je infrastructuur worden gebruikt.
+        Voorbeeld: Een parameter die naar een andere parameter verwijst, zoals de naam van een database.
+
+AWS Automation Runbook
+
+
+AWS Automation Runbook is een set geautomatiseerde stappen die worden uitgevoerd om routinematige of complexe taken binnen AWS te voltooien. Runbooks kunnen worden geconfigureerd om automatisch actie te ondernemen op basis van een trigger.
+Praktische Case
+
+Een organisatie gebruikt een Runbook om automatisch een EC2-instance te herstarten als het wordt gedetecteerd dat de instance meer dan een bepaalde hoeveelheid tijd zonder reactie is.
+Voor- en Nadelen van AWS Automation Runbooks
+Voordelen:
+
+    Automatisering van repetitieve taken:
+        Voorbeeld: Het automatisch patchen van systemen zonder handmatige interventie.
+    Consistentie in uitvoering:
+        Voorbeeld: Het uitvoeren van dezelfde set van handelingen in meerdere regio's zonder menselijke fouten.
+
+Nadelen:
+
+    Complexiteit van configuratie:
+        Voorbeeld: Het opzetten van een Runbook voor een geavanceerde infrastructuur kan tijdrovend en complex zijn.
+    Kosten:
+        Voorbeeld: Het uitvoeren van veel automatisering kan de kosten verhogen afhankelijk van de vereiste resources.
+
+AWS Automation Runbook binnen het IaC Landschap
+Vergelijking met Andere Frameworks
+
+Automation Runbooks in AWS kunnen worden vergeleken met Infrastructure-as-Code (IaC) tools zoals Terraform of CloudFormation. Het verschil is dat Runbooks specifiek gericht zijn op het automatiseren van operationele taken, terwijl IaC zich richt op het definiëren van infrastructuur en resources.
+## Finops tools
+## DevOps tools in de cloud
+## Container service in de cloud
+## Cloudformation en Automation
+
