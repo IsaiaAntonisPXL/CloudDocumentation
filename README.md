@@ -413,6 +413,253 @@ Vergelijking met Andere Frameworks
 
 Automation Runbooks in AWS kunnen worden vergeleken met Infrastructure-as-Code (IaC) tools zoals Terraform of CloudFormation. Het verschil is dat Runbooks specifiek gericht zijn op het automatiseren van operationele taken, terwijl IaC zich richt op het definiëren van infrastructuur en resources.
 ## Finops tools
+
+Cloud FinOps (Financial Operations) is het raamwerk dat bedrijven helpt om cloudkosten efficiënt te beheren, te optimaliseren en te voorspellen. Het combineert de technische en financiële kant van cloudinfrastructuren en richt zich op samenwerking tussen teams om een beter begrip van kosten en waarde te verkrijgen.
+### Algemene Concepten in FinOps
+#### 1. FinOps
+
+FinOps is een set van best practices, processen en tools die bedrijven helpen bij het beheren van hun cloudkosten, terwijl ze de waarde van de cloud optimaliseren. Het zorgt voor samenwerking tussen de technische, financiële en operationele teams.
+    __Voorbeeld:__ 
+    
+    Een bedrijf implementeert FinOps om realtime kosten te volgen, verantwoording af te leggen en samenwerking tussen teams te verbeteren, zodat kostenbeheersing en waarde-maximalisatie hand in hand gaan.
+
+#### 2. AWS Budgets
+
+AWS Budgets stelt je in staat om budgetten in te stellen voor cloudkosten en verbruik. Het biedt waarschuwingen wanneer de werkelijke uitgaven of het verbruik een ingesteld limiet overschrijden.
+    __Voorbeeld:__ 
+    
+    Een bedrijf stelt een maandelijks budget in voor zijn AWS-diensten en ontvangt een melding als het 80% van het budget overschrijdt.
+
+#### 3. Spot Instances
+
+Spot Instances zijn tijdelijke EC2-instances die gebruik maken van ongebruikte capaciteit van AWS tegen lagere prijzen.
+    __Voorbeeld:__ 
+    
+    Een bedrijf draait een batchverwerkingsprogramma op Spot Instances om de kosten drastisch te verlagen, zolang de processen niet kritisch zijn voor tijdige uitvoering.
+
+#### 4. Reserved Instances
+
+Reserved Instances (RI) zijn vooraf betaalde, langdurige instances die aanzienlijke kortingen bieden ten opzichte van on-demand prijzen.
+    __Voorbeeld:__ 
+    
+    Een organisatie koopt Reserved Instances voor een periode van drie jaar om zijn servercapaciteit te verlagen en kosten te besparen voor zijn langdurige workload.
+
+### 3 Eigenschappen van Cloud FinOps
+
+__Realtime kostenbeheer__:
+        Cloud FinOps zorgt ervoor dat je continu inzicht hebt in de werkelijke uitgaven in de cloud. Dit stelt bedrijven in staat om snel in te grijpen bij onverwachte kostenstijgingen.
+        Voorbeeld: 
+        
+        Een organisatie stelt een alarm in voor overmatige kosten in AWS en krijgt real-time meldingen wanneer het budget wordt overschreden.
+
+__Kostenoptimalisatie door samenwerking:__
+        FinOps vereist samenwerking tussen de financiële en technische teams om de cloudkosten te optimaliseren.
+        Voorbeeld: 
+        
+        Het technische team werkt samen met de financiële afdeling om onnodige resources, zoals ongebruikte EC2-instances, te verwijderen.
+
+__Wendbaarheid en voorspelbaarheid:__
+        FinOps biedt zowel flexibiliteit als nauwkeurigheid in kostenvoorspelling, zodat bedrijven hun cloudbudgetten nauwkeurig kunnen plannen en aanpassen.
+        Voorbeeld: 
+        
+        Een startup gebruikt historische gegevens en gedetailleerde analyses om de cloudkosten te voorspellen voor de komende drie maanden.
+
+### 4 Elementen van de FinOps Tooling Stack
+
+__Kosten- en gebruiksgegevens:__
+         Verzamelen van gedetailleerde gegevens over het verbruik van cloudresources en de bijbehorende kosten.
+        Voorbeeld: 
+        
+        Het gebruik van AWS Cost Explorer om inzicht te krijgen in welke services de meeste kosten genereren.
+
+__Kostenmodellen en budgetten:__
+         Het instellen van budgetten en het definiëren van kostenmodellen die organisaties helpen hun uitgaven te beheren.
+        Voorbeeld: 
+        
+        Een bedrijf maakt gebruik van AWS Budgets om budgetlimieten in te stellen voor verschillende teams en ontvangt meldingen wanneer deze limieten bijna worden overschreden.
+
+__Kostenoptimalisatie:__
+         Het implementeren van processen en tools die helpen om cloudkosten te optimaliseren door bijvoorbeeld overbodige resources te identificeren.
+        Voorbeeld: 
+        
+        Het gebruik van AWS Trusted Advisor om onbenutte EC2-instances te identificeren en deze automatisch te beëindigen.
+
+__Rapportage en analyse:__
+         Het genereren van gedetailleerde rapporten en analyses over cloudkosten om strategische beslissingen te nemen.
+        Voorbeeld: 
+        
+        Het gebruik van AWS Cost Explorer om maandelijkse rapporten te genereren en kosten per afdeling te analyseren.
+
+### 6 FinOps Domains & Capabilities
+
+Kostenbeheer:
+: Het controleren van cloudkosten en het implementeren van strategieën om uitgaven te verminderen.
+        Voorbeeld: 
+        
+        Een team gebruikt AWS Budgets om het maandelijks budget voor EC2-instances te monitoren.
+
+Kostenoptimalisatie:
+: Het identificeren van onnodige of niet-gebruikte cloudresources en het optimaliseren van het verbruik.
+Voorbeeld: 
+        
+        AWS Trusted Advisor wordt gebruikt om ongebruikte EBS-volumes te identificeren en deze op te schonen.
+
+Forecasting:
+: Het nauwkeurig voorspellen van toekomstige cloudkosten op basis van historisch verbruik.
+Voorbeeld: 
+        
+        Een bedrijf maakt gebruik van Cost Explorer om cloudkosten te voorspellen voor de komende maanden en deze op te nemen in hun budgetplanning.
+
+Cost Transparency:
+: Het creëren van volledige transparantie in cloudkosten door gedetailleerde rapporten en dashboards te bieden.
+    Voorbeeld: 
+        
+        Het gebruik van AWS Cost Explorer om een gedetailleerd overzicht van alle kosten per service te verkrijgen.
+
+Governance:
+: Het afdwingen van beleid en controles voor het beheren van cloudkosten.
+    Voorbeeld: 
+        
+        Het implementeren van tagging-standaarden in AWS zodat kosten eenvoudig kunnen worden toegewezen aan specifieke projecten.
+
+Collaboration:
+: Het bevorderen van samenwerking tussen technische, operationele en financiële teams om kosten te beheren.
+Voorbeeld: 
+        
+        Regelmatige vergaderingen tussen het ontwikkelteam en het financiële team om te bespreken welke cloudservices geoptimaliseerd kunnen worden.
+
+### 6 FinOps Principles
+
+Teams zijn verantwoordelijk voor hun clouduitgaven:
+        : Elke afdeling of team moet verantwoordelijk zijn voor zijn eigen cloudkosten.
+        Voorbeeld: 
+        
+                Het marketingteam beheert de kosten voor hun applicaties, terwijl de IT-afdeling verantwoordelijk is voor de serverkosten.
+
+Gebruik cloudkosten om zakelijke beslissingen te sturen:
+        : Cloudkosten moeten niet alleen worden gezien als een operationele kostenpost, maar als een strategisch hulpmiddel voor besluitvorming.
+        Voorbeeld: 
+
+                Het besluit om een nieuwe feature te bouwen wordt genomen op basis van de kosten-voordelenanalyse van de cloudresources die nodig zijn.
+
+Beheer cloudkosten met behulp van inzichten en gegevens:
+        : Het analyseren van gedetailleerde kosten- en gebruiksdata om strategische keuzes te maken.
+        Voorbeeld: 
+        
+                Het gebruik van AWS Cost Explorer om inzicht te krijgen in welke services het meest kostenintensief zijn en waar besparingen mogelijk zijn.
+
+Maak cloudkosten zichtbaar en begrijpelijk voor alle teams:
+        : Transparantie is cruciaal om ervoor te zorgen dat iedereen in de organisatie begrijpt hoe de cloudkosten zich verhouden tot de bedrijfsdoelen.
+        Voorbeeld: 
+                
+                Het maken van visuele dashboards om alle teams te laten zien welke delen van de infrastructuur het meeste kosten.
+
+Optimaliseer het cloudverbruik:
+        : Het voortdurend optimaliseren van cloudgebruik om onbenutte of inefficiënt toegewezen resources te verminderen.
+        Voorbeeld: 
+        
+                Het beëindigen van onbenutte EC2-instances om kosten te besparen.
+
+Gebruik een iteratief proces voor kostenbeheer:
+        : Het proces van kostenbeheer moet continu worden geoptimaliseerd en aangepast aan veranderende behoeften.
+        Voorbeeld: 
+        
+                Een bedrijf evalueert elke maand zijn cloudkosten en past het budget aan op basis van veranderende verbruikspatronen.
+
+### AWS Billing Dashboard
+
+
+Het __AWS Billing Dashboard__ biedt een overzicht van je huidige kosten en het gebruik van AWS-services. Het biedt gebruikers inzicht in hun maandelijkse uitgaven en stelt ze in staat om hun facturering te monitoren.
+
+Praktische Case
+: Een organisatie gebruikt het AWS Billing Dashboard om de maandelijkse kosten te monitoren en te zorgen dat ze binnen het budget blijven voor hun AWS-omgeving.
+
+
+
+__AWS Cost Explorer__
+AWS Cost Explorer helpt gebruikers bij het visualiseren van cloudkosten en gebruik. Het biedt gedetailleerde rapporten en filters die helpen bij het begrijpen van kosten, verbruik en trends.
+
+Praktische Case
+: Een bedrijf gebruikt AWS Cost Explorer om historische kosten te analyseren en de impact van verschillende services op hun maandelijkse uitgaven te begrijpen.
+CloudWatch Billing Alarms
+
+__4 Eigenschappen__
+
+__Waarschuwingen bij kostenoverschrijding:__
+        Voorbeeld: 
+        
+        Een alarm wordt ingesteld om te waarschuwen wanneer de kosten van EC2-instances boven een bepaald budget komen.
+
+__Gepersonaliseerde drempels:__
+        Voorbeeld: 
+        
+        Het instellen van een alarm voor een specifiek verbruik zoals het aantal S3-opslaadkosten dat de vooraf ingestelde limiet overschrijdt.
+
+__Automatische acties bij overschrijding:__
+        Voorbeeld: 
+        
+        Automatisch stoppen van instances wanneer het geconfigureerde budget is overschreden.
+
+__Meerdere meldingsopties:__
+        Voorbeeld: 
+        
+        Een melding wordt gestuurd via e-mail en SMS wanneer de cloudkosten een bepaalde drempel bereiken.
+
+### EC2 Instances voor FinOps
+__Categorieën:__
+
+On-Demand Instances:
+        : Betaal per uur voor de compute-kracht die je gebruikt zonder langdurige verplichtingen.
+        Voorbeeld: Een startup maakt gebruik van on-demand instances voor tijdelijke workloads.
+
+Reserved Instances:
+        : Betaal vooraf voor een langdurig gebruik van EC2-instances en krijg korting op de kosten.
+        Voorbeeld: Een bedrijf koopt reserved instances om kosten te besparen voor continu draaiende workloads.
+
+### 4 Strategieën voor Kostenreductie
+
+__Gebruik Reserved Instances:__
+        Voorbeeld: 
+        
+        Door een driejarige reserved instance te kopen voor een webapplicatie, kan het bedrijf aanzienlijke kortingen krijgen.
+
+__Optimaliseer je EC2-instances:__
+        Voorbeeld: 
+        
+        Door over te schakelen naar kleinere EC2-instances voor piekbelasting, vermindert een bedrijf zijn kosten.
+
+__Gebruik van Spot Instances voor tijdelijke workloads:__
+        Voorbeeld: 
+        
+        Een bedrijf draait batchverwerkingsjobs op spot instances om de kosten aanzienlijk te verlagen.
+
+__Schaal dynamisch op basis van vraag:__
+        Voorbeeld: 
+        
+        Een webapplicatie die automatisch schaling van EC2-instances gebruikt om de kosten te optimaliseren op basis van verkeer.
+
+### AWS Trusted Advisor
+__Key Features:__
+
+__Kostenoptimalisatie:__
+        Voorbeeld: 
+        
+        AWS Trusted Advisor helpt bij het identificeren van ongebruikte resources, zoals idle EC2-instances, die je kunt beëindigen om kosten te besparen.
+
+__Beveiligingsaanbevelingen:__
+        Voorbeeld: 
+        
+        Het identificeert beveiligingsconfiguraties die verbeterd moeten worden, zoals onbeveiligde S3-buckets.
+
+__Prestaties en betrouwbaarheid:__
+        Voorbeeld: 
+        
+        Het geeft aanbevelingen voor het verbeteren van de prestaties van jouw infrastructuur, zoals het aanpassen van EC2-instances voor betere prestaties.
+
+__Compliance-controle:__
+        Voorbeeld: 
+        
+        AWS Trusted Advisor helpt bij het waarborgen van naleving van best practices, zoals het versleutelen van gegevens in rust.
 ## DevOps tools in de cloud
 ## Container service in de cloud
 ## Cloudformation en Automation
