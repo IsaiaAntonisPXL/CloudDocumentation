@@ -1140,4 +1140,239 @@ __Verhoogde Beschikbaarheid:__
         
         Door observability in te stellen, kan een website automatisch reageren op verhoogd verkeer en schaalbare infrastructuur implementeren om downtime te voorkomen.
 ## Cloudformation en Automation
+__1. Configuration Management__
+
+Configuration management is het proces van het beheren van de configuratie van infrastructuur en softwarecomponenten. Het zorgt ervoor dat de systemen consistent en controleerbaar zijn, zelfs wanneer ze op grote schaal worden beheerd.
+    Voorbeeld: 
+    
+    Het gebruik van tools zoals Ansible, Chef of Puppet om EC2-instanties te configureren met de juiste softwareversies en instellingen, en ervoor te zorgen dat elke instantie dezelfde configuratie krijgt bij het opstarten.
+
+__2. Idempotency__
+
+Idempotency betekent dat het meerdere keren uitvoeren van dezelfde actie geen extra effect heeft, zolang de input niet verandert. Dit is belangrijk voor configuratiebeheer en infrastructuurautomatisering, waar herhaalde acties geen ongewenste bijwerkingen mogen veroorzaken.
+    Voorbeeld: 
+    
+    Het gebruik van een CloudFormation-template om een EC2-instantie te creëren: ongeacht hoeveel keer de template wordt toegepast, blijft de configuratie van de instantie hetzelfde.
+
+__3. UserData__
+
+UserData is een functie die wordt gebruikt om scripts uit te voeren tijdens de initiële opstart van een EC2-instance. Dit wordt vaak gebruikt om automatisch software te installeren of instellingen te configureren zodra een instantie wordt gestart.
+    Voorbeeld:
+    
+     Het gebruik van een bash-script in UserData om een webserver te installeren en configureren wanneer een nieuwe EC2-instantie wordt opgestart.
+
+__4. Change Set__
+
+Een Change Set is een set van wijzigingen die CloudFormation zal doorvoeren wanneer een stack wordt bijgewerkt. Het toont de verwachte wijzigingen, zodat je kunt controleren wat er gaat veranderen voordat je de wijzigingen daadwerkelijk toepast.
+    Voorbeeld: 
+    
+    Je hebt een CloudFormation-stack met een S3-bucket. Je wilt de naam van de bucket wijzigen. Voordat je de wijziging toepast, maak je een Change Set aan om te zien wat er precies gaat veranderen.
+
+__5. Stack__
+
+Een Stack is een verzameling van AWS-resources die je samen kunt beheren via CloudFormation. Het omvat alle resources die gedefinieerd zijn in een CloudFormation-template en wordt gebruikt om een groep gerelateerde infrastructuur in één keer te beheren.
+    Voorbeeld: 
+    
+    Een stack die een EC2-instantie, een RDS-database en een S3-bucket bevat, wordt beheerd via CloudFormation, zodat alle resources tegelijkertijd kunnen worden gedeployed of bijgewerkt.
+
+__6. Template__
+
+Een Template in CloudFormation is een JSON- of YAML-bestand dat de infrastructuur en configuratie van de resources definieert. Het bevat specificaties voor de resources die je wilt creëren, zoals EC2-instanties, S3-buckets, IAM-rollen, enzovoort.
+    Voorbeeld:
+    
+     Een CloudFormation-template dat een VPC, subnets, een EC2-instantie en een RDS-database definieert voor een applicatie.
+
+__7. Termination Protection__
+
+Termination Protection is een instelling die voorkomt dat een EC2-instantie per ongeluk wordt beëindigd. Dit voorkomt dat de instantie wordt gestopt of verwijderd, zelfs als iemand een terminate-opdracht uitvoert.
+    Voorbeeld:
+    
+     Een productie-EC2-instance heeft termination protection ingeschakeld, zodat het niet per ongeluk kan worden afgesloten tijdens onderhoudswerkzaamheden.
+
+__8. CloudFormation::Init & cfn-init__
+
+CloudFormation::Init is een onderdeel van CloudFormation waarmee je configuratiescripts kunt uitvoeren op EC2-instanties bij de initiële opstart. Het werkt samen met de cfn-init tool die deze configuratiescripts uitvoert op de instance.
+    Voorbeeld: 
+    
+    Het gebruik van cfn-init om een EC2-instantie te configureren, bijvoorbeeld het installeren van software zoals een webserver of een database op de instantie.
+
+__9. Stack Policy__
+
+Een stack policy is een set van regels die bepalen welke resources binnen een stack kunnen worden gewijzigd of verwijderd. Het kan worden gebruikt om kritieke resources te beschermen tegen ongewenste wijzigingen.
+    Voorbeeld: 
+    
+    Het toepassen van een stack policy om ervoor te zorgen dat een bepaalde S3-bucket niet wordt verwijderd wanneer de stack wordt bijgewerkt.
+
+### Voordelen van Configuration Management
+
+__Consistentie en Herhaalbaarheid:__
+    Uitleg: Met configuration management kunnen configuraties consistent worden toegepast op verschillende systemen. Dit zorgt ervoor dat er geen afwijkingen zijn tussen omgevingen en dat applicaties overal op dezelfde manier draaien.
+        Voorbeeld:
+        
+         Een applicatie die afhankelijk is van specifieke versies van libraries kan met configuration management ervoor zorgen dat elke EC2-instantie dezelfde versie van de library heeft.
+
+__Snellere Foutopsporing en Herstel:__
+        Uitleg: Wanneer een configuratiefout optreedt, kan het systeem snel worden teruggezet naar de juiste staat via geautomatiseerde configuratie-updates, waardoor de impact van fouten minimaal is.
+        Voorbeeld:
+        
+         Als een update van de webserver faalt, kan configuration management helpen om automatisch terug te keren naar de laatste werkende configuratie.
+
+__Schaalbaarheid:__
+        Uitleg: Configuration management maakt het eenvoudig om dezelfde configuratie over meerdere servers te implementeren, wat schaalbaarheid mogelijk maakt zonder handmatige interventie.
+        Voorbeeld: 
+        
+        Het snel opzetten van duizenden identieke EC2-instanties met behulp van tools zoals Ansible of Puppet.
+
+### Automatische Configuratie van EC2-instanties
+
+__UserData:__
+         Zoals eerder besproken, kun je via UserData scripts uitvoeren bij het opstarten van een EC2-instantie.
+        Voorbeeld: 
+        
+    Een EC2-instantie die via UserData automatisch een Nginx-webserver installeert zodra deze wordt opgestart.
+
+__CloudFormation::Init & cfn-init:__
+         Deze functies zorgen voor configuratiebeheer na de initiële creatie van een EC2-instance.
+        Voorbeeld:
+        
+    Het gebruik van cfn-init om na de creatie van een instantie automatisch een applicatie te installeren en configureren.
+
+__AWS Systems Manager (SSM):__
+         Met Systems Manager kun je de configuratie van EC2-instanties beheren, zelfs nadat ze zijn opgestart.
+        Voorbeeld: 
+        
+    Het gebruik van SSM om automatisch patches toe te passen op EC2-instanties zonder handmatige interventie.
+
+### Voor- en Nadelen van een Standalone Configuration Server
+__Voordelen:__
+
+__Centrale Configuratie:__
+         Het hebben van één centrale server maakt het gemakkelijk om configuraties bij te werken en uit te rollen naar meerdere systemen.
+        Voorbeeld: 
+        
+    Een bedrijf heeft een configuratieserver die automatisch software-updates naar alle servers in hun datacentrum verzendt.
+
+__Eenvoudig Beheer:__
+         Je hebt slechts één plek nodig om configuraties te beheren, waardoor beheer eenvoudiger wordt.
+        Voorbeeld:
+        
+     Alle applicatie-instellingen en systeemconfiguraties worden op één plek beheerd, wat het overzicht en de controle vergroot.
+
+__Herhaalbare Implementaties:__
+         Je kunt dezelfde configuraties op meerdere systemen toepassen, waardoor je herhaalbare en consistente implementaties krijgt.
+        Voorbeeld: Het installeren van een webapplicatie op meerdere servers wordt met één configuratieserver gecentraliseerd en geautomatiseerd.
+
+__Nadelen:__
+
+__Single Point of Failure:__
+         Als de standalone configuratieserver uitvalt, kan dit de configuratie van alle verbonden systemen verstoren.
+        Voorbeeld:
+        
+    Een storing in de configuratieserver kan de uitrol van kritieke updates naar EC2-instanties verhinderen.
+
+__Schaalproblemen:__
+         Naarmate je infrastructuur groeit, kan het moeilijk zijn om de configuratieserver op te schalen om met de groei om te gaan.
+        Voorbeeld: 
+        
+    Bij een grotere infrastructuur kan de configuratieserver traag worden bij het toepassen van configuraties op honderden EC2-instanties.
+
+__Beveiligingsrisico’s:__
+         Het centraal opslaan van configuraties kan een beveiligingsrisico vormen als de server niet goed is beveiligd.
+        Voorbeeld: 
+        
+    Als de configuratieserver wordt gecompromitteerd, kunnen kwaadwillenden toegang krijgen tot gevoelige configuratie-instellingen.
+
+### Infrastructuur Resource Lifecycle
+
+De infrastructuur resource lifecycle verwijst naar het proces van het creëren, onderhouden en uiteindelijk verwijderen van cloudresources. Het begint met de creatie van resources, gaat door met onderhoud en updates, en eindigt met de verwijdering van resources wanneer ze niet meer nodig zijn.
+    Voorbeeld:
+    
+     Het lifecycleproces voor een EC2-instantie omvat het starten van de instantie, het updaten van de configuratie, en het beëindigen van de instantie wanneer deze niet langer nodig is.
+
+### Cloud Deployment Challenges
+
+__Complexiteit van Multi-Cloud Omgevingen:__
+         Het beheren van een applicatie over meerdere cloudomgevingen kan leiden tot complexiteit en interoperabiliteitsproblemen.
+        Voorbeeld: 
+        
+        Een organisatie die AWS en Azure gebruikt voor verschillende delen van hun infrastructuur kan moeite hebben om deze omgevingen effectief te integreren.
+
+__Versiebeheer en Rollbacks:__
+         Het beheren van versies van de applicatie en het terugdraaien van een foutieve implementatie kan moeilijk zijn zonder de juiste tools.
+        Voorbeeld: 
+        
+        Als een nieuwe versie van een applicatie faalt, moet je een efficiënte manier hebben om de vorige versie snel terug te zetten.
+
+__Beveiliging van Gevoelige Gegevens:__
+         Het beheren van gevoelige gegevens in de cloud vereist dat beveiliging op verschillende niveaus wordt gehandhaafd.
+        Voorbeeld: 
+        
+        Het gebruik van encryptie en toegangscodes om gevoelige klantinformatie te beschermen tijdens clouddeployments.
+
+__Kostenbeheersing:__
+         Het is belangrijk om de kosten te beheren bij clouddeployments, vooral bij schaalvergroting.
+        Voorbeeld: 
+        
+        Het optimaliseren van de keuze van EC2-instanties en opslagopties om onnodige kosten te vermijden.
+
+### Technologieën voor Geautomatiseerde Deployments binnen AWS
+
+__AWS CloudFormation:__
+         Een declarative tool voor het automatisch uitrollen van infrastructuur door het definiëren van resources in een template.
+
+        Voorbeeld: Het automatisch creëren van een VPC met subnets, security groups, en een EC2-instance.
+
+__AWS CodeDeploy:__
+         Een service voor het automatisch uitrollen van applicaties naar EC2-instanties en Lambda-functies.
+
+
+        Voorbeeld: Het automatisch uitrollen van een nieuwe versie van een webapplicatie naar EC2-instanties.
+
+__AWS Elastic Beanstalk:__
+         Een Platform-as-a-Service (PaaS) voor het automatisch beheren van applicaties zonder dat je de infrastructuur hoeft te beheren.
+
+
+        Voorbeeld: Het eenvoudig uitrollen van een Node.js-applicatie zonder infrastructuurbeheer.
+
+### CloudFormation in het IaC Landschap
+
+CloudFormation is een infrastructuur als code (IaC)-tool die AWS-resources definieert in templates en deze automatisch implementeert. Het biedt native ondersteuning voor AWS en is volledig geïntegreerd met andere AWS-diensten.
+
+__Vergelijking met Terraform en Pulumi:__
+        __Voordelen van CloudFormation:__ Native integratie met AWS, robuuste beheeropties voor resources en stacks, en goede ondersteuning voor rollbacks.
+        __Nadelen:__ Beperktere ondersteuning voor multi-cloud omgevingen en kan complex zijn bij grotere infrastructuren.
+
+### CloudFormation Template Structuur
+
+__Parameters:__
+         Parameters zijn waarden die door de gebruiker worden ingevoerd wanneer de template wordt uitgevoerd. Ze kunnen worden gebruikt om resources dynamisch te configureren.
+        Voorbeeld: 
+        
+        Het gebruik van een parameter voor het definiëren van de grootte van een EC2-instance.
+
+__Pseudo Parameters:__
+         Dit zijn vooraf gedefinieerde parameters in CloudFormation die automatisch door AWS worden gevuld, zoals de regio of de stacknaam.
+        Voorbeeld: 
+        
+        Het gebruik van de AWS::Region pseudo parameter om de regio van de stack te bepalen.
+
+__Mappings:__
+         Mappings zijn statische gegevens die kunnen worden gebruikt om waarden op basis van bepaalde criteria te selecteren.
+        Voorbeeld: 
+        
+        Het gebruik van een mapping om verschillende AMI-typen te selecteren, afhankelijk van de regio waarin de stack wordt geïmplementeerd.
+
+### cfn-signal, WaitCondition en WaitConditionHandle
+
+__cfn-signal:__
+         Een commando dat door EC2-instanties wordt uitgevoerd om CloudFormation te informeren dat een resource succesvol is gestart of geïnstalleerd.
+        Voorbeeld:
+        
+     Na het installeren van een webserver, stuurt een EC2-instantie een cfn-signal naar CloudFormation om aan te geven dat het installatieproces is voltooid.
+
+__WaitCondition en WaitConditionHandle:__
+         Deze worden gebruikt om CloudFormation te laten wachten tot een specifieke gebeurtenis plaatsvindt, zoals het succesvol opstarten van een instantie.
+        Voorbeeld: 
+    
+    Het gebruik van een WaitCondition om CloudFormation te laten wachten tot een EC2-instantie klaar is om te worden gebruikt voordat de volgende stap in de stack wordt uitgevoerd.
 
