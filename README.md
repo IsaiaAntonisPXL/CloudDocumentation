@@ -3,7 +3,7 @@
 ## opfrissing cloud concepten
 
 ![title](images/4layersaws.png)
-
+### AWS layers
 AWS bestaat uit 4 lagen,
 
 1. __Infrastructure__
@@ -47,8 +47,8 @@ Deze bovenste laag biedt eindgebruikersgerichte diensten zoals virtuele desktops
     Voorbeeld: Voeg loginfunctionaliteit toe aan je app met Cognito.
     Collaboration: Tools zoals WorkSpaces voor samenwerking en virtuele werkplekken.
     Voorbeeld: Stel werknemers in staat op afstand te werken via virtuele desktops.
-
 ### Foundation services
+
 #### 1. Compute
 ![title](images/foundation_compute.png)
 #### 1.1 Common used compute services and their use cases
@@ -213,3 +213,42 @@ __Use Cases__:
     Audit logging: Tracking changes to resources and identifying unauthorized access.
     Security analysis: Monitoring and investigating suspicious activities.
     Compliance reporting: Proving adherence to regulations by providing an activity history.
+### Platform services
+#### 1. Regions
+
+Een "Region" is een geografische locatie waar AWS datacenters (Availability Zones) zijn gevestigd. Elke regio bestaat uit meerdere zones om hoge beschikbaarheid en fouttolerantie te garanderen.
+
+In eigen woorden: Dit is de fysieke plek waar je applicaties en data worden gehost. Je kiest een regio dicht bij je gebruikers om de prestaties te verbeteren.
+
+Bij het kiezen van een regio moet je wel op onderstaande letten:
+- __data goverance/legaliteit__
+- __latency__
+- __beschikbare services in de region__
+- __costs__
+
+__Voorbeeld__:
+
+    Amazon EU (Frankfurt) Region: Een Europese e-commercewebsite gebruikt de Frankfurt-regio om lage latentie te bieden aan klanten in Europa.
+    Use case: Het kiezen van een regio dicht bij klanten om snellere responstijden te realiseren.
+
+#### 2. Availability Zones (AZs)
+
+Een regio bevat meerdere AZ's, die bestaan uit afzonderlijke datacenters met eigen stroom, koeling en netwerk. Ze zijn ontworpen om onafhankelijk te zijn, maar ook om met elkaar te communiceren via snelle verbindingen.
+
+In eigen woorden: Een AZ is een cluster van datacenters in een regio. Het gebruik van meerdere AZ's zorgt ervoor dat je applicatie online blijft, zelfs als een van de zones faalt.
+
+__Voorbeeld__:
+
+    Een applicatie die gebruikmaakt van meerdere AZ's in de US East (N. Virginia) Region om downtime te voorkomen.
+    Use case: Het draaien van een database in twee AZ's met automatische failover voor hoge beschikbaarheid.
+
+#### 3. Edge Locations
+
+Edge-locaties zijn datacenters die zich dicht bij eindgebruikers bevinden en worden gebruikt door AWS-diensten zoals Amazon CloudFront. Ze verbeteren de prestaties van applicaties door content dichter bij de gebruiker te brengen.
+
+In eigen woorden: Dit zijn datacenters verspreid over de hele wereld die zorgen voor snelle levering van content zoals websites, video's en API's.
+
+__Voorbeeld__:
+
+    Een streamingplatform maakt gebruik van een edge-locatie in Tokyo om video's met lage latency te leveren aan kijkers in Japan.
+    Use case: Een internationaal bedrijf gebruikt edge-locaties om een wereldwijd publiek snel toegang te bieden tot statische en dynamische content.
