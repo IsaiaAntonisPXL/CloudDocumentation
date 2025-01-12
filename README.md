@@ -815,14 +815,14 @@ Het bewaken van de prestaties en de gezondheid van de applicatie in productie.
 __AWS CodeBuild:__
         AWS CodeBuild is een volledig beheerde build-service die code bouwt, test en deployt zonder de noodzaak van servers.
         Vergelijking: Het biedt naadloze integratie met andere AWS-services zoals CodeCommit en CodePipeline.
-        
+
 __Praktische Case:__
         Een bedrijf gebruikt AWS CodeBuild voor het automatiseren van build- en testprocessen voor hun applicaties.
 
 __Jenkins:__
         Jenkins is een open-source automation server die gebruikt wordt voor Continuous Integration en Continuous Deployment.
         Vergelijking: Jenkins vereist meer handmatige configuratie en beheer van de server, terwijl CodeBuild volledig beheerd wordt door AWS.
-
+        
 __Praktische Case:__
         Jenkins wordt vaak gebruikt in omgevingen waar volledige controle over de serverconfiguratie vereist is, terwijl AWS CodeBuild eenvoudiger is voor teams die geen servers willen beheren.
 ## Container service in de cloud
