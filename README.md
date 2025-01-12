@@ -1,4 +1,5 @@
 # Cloud samenvatting
+
 ## opfrissing cloud concepten
 
 ![title](images/4layersaws.png)
@@ -48,15 +49,167 @@ Deze bovenste laag biedt eindgebruikersgerichte diensten zoals virtuele desktops
     Voorbeeld: Stel werknemers in staat op afstand te werken via virtuele desktops.
 
 ### Foundation services
-#### 1. compute
+#### 1. Compute
 ![title](images/foundation_compute.png)
-bevat alle __compute__ services zoals __EC2__ ,__ECR__ , __ECS__ en __EKS__
-##### common used services and their use cases
-...
-#### 2. storage
+#### 1.1 Common used compute services and their use cases
+1. __Amazon EC2 (Elastic Compute Cloud)__
+
+A service that provides resizable virtual servers (instances) in the cloud.
+__Use Cases__:
+
+    Hosting websites and applications.
+    Running custom software that requires specific operating systems or configurations.
+    Batch processing workloads.
+    Running legacy applications that can’t easily be containerized or serverless.
+
+2. __AWS Lambda__
+
+A serverless compute service that runs your code in response to events.
+__Use Cases__:
+
+    Building microservices or APIs.
+    Running short-lived, event-driven functions (e.g., processing S3 uploads, triggering actions from database changes).
+    Automating infrastructure tasks like resizing images or monitoring logs.
+    Real-time data processing, such as streaming data from IoT devices.
+
+3. __Amazon ECS (Elastic Container Service)__
+
+A container orchestration service to deploy and manage containerized applications.
+__Use Cases__:
+
+    Running Docker containers for microservices-based architectures.
+    Orchestrating containerized batch jobs.
+    Hosting scalable APIs or backend services.
+
+4. __Amazon EKS (Elastic Kubernetes Service)__
+
+A managed Kubernetes service to run Kubernetes clusters without managing the control plane.
+__Use Cases__:
+
+    Running containerized workloads using Kubernetes-native tools.
+    Migrating on-premises Kubernetes workloads to AWS.
+    Managing multi-cloud or hybrid Kubernetes clusters.
+
+
+#### 2. Storage
 ![title](images/foundation_storage.png)
-bevate alle __storage__ services zoals __S3__, __EBS__ en __Glacier__
-#### 3. network
+#### 2.1 Common used storage services and their use cases
+Here are the top 4 commonly used AWS Storage Services and their use cases:
+1. __Amazon S3 (Simple Storage Service)__
+
+A highly scalable, durable, and cost-effective object storage service.
+
+__Use Cases__:
+
+    Data backups and archiving: Storing backups or compliance-related data.
+    Static website hosting: Hosting static files like HTML, CSS, and images.
+    Big data storage: Storing raw data for analytics, such as logs or IoT device data.
+    Media storage: Storing large media files like videos, images, or audio.
+
+2. __Amazon EBS (Elastic Block Store)__
+
+Block storage for use with Amazon EC2 instances, designed for low-latency workloads.
+
+__Use Cases__:
+
+    Database storage: Running high-performance relational or NoSQL databases like MySQL or MongoDB.
+    Transactional workloads: Supporting applications that require low-latency, high-throughput access.
+    Boot volumes: Hosting the root file system of an EC2 instance.
+
+3. __Amazon EFS (Elastic File System)__
+
+A fully managed, scalable file storage for use with AWS compute services.
+
+__Use Cases__:
+
+    Shared storage: Providing a shared file system for multiple EC2 instances or containers.
+    Content management systems: Hosting shared content like media assets or configuration files.
+    Big data and analytics: Storing large datasets accessible by multiple processing nodes.
+
+4. __Amazon Glacier (S3 Glacier)__
+
+A low-cost storage service for archiving and long-term data storage.
+
+__Use Cases__:
+
+    Cold storage: Archiving infrequently accessed data such as compliance records or legal documents.
+    Disaster recovery: Storing backups for recovery in the event of data loss.
+    Data retention: Retaining data for regulatory or historical purposes at a low cost.
+
+
+#### 3. Network
 ![title](images/foundation_network.png)
-#### 4. security
+#### 3.1 Common used network services and their use cases
+
+1. __Amazon VPC (Virtual Private Cloud)__
+
+A service that lets you create a logically isolated network environment in AWS.
+
+__Use Cases__:
+
+    Isolating workloads: Running sensitive applications in a private network.
+    Hybrid cloud environments: Connecting on-premises networks to AWS using VPN or Direct Connect.
+    Custom networking: Defining custom subnets, routing tables, and security groups.
+
+2. __Amazon CloudFront__
+
+A content delivery network (CDN) that caches data at edge locations for faster delivery.
+
+__Use Cases__:
+
+    Content delivery: Serving static and dynamic content like websites, videos, or APIs.
+    Global reach: Improving performance for users in different regions.
+    DDoS protection: Enhancing security through integration with AWS Shield.
+
+3. __Elastic Load Balancing (ELB)__
+
+Automatically distributes incoming traffic across multiple targets (e.g., EC2 instances, containers).
+
+__Use Cases__:
+
+    High availability: Ensuring application reliability by routing traffic to healthy instances.
+    Scaling applications: Distributing traffic as instances scale up or down.
+    Multi-AZ deployments: Balancing traffic across multiple availability zones for fault tolerance.
+
+4. Amazon Route 53__
+
+A scalable DNS and domain name management service.
+
+__Use Cases__:
+
+    Domain management: Registering and managing domains directly through AWS.
+    Routing traffic: Directing traffic to endpoints (e.g., EC2 instances, S3 buckets) based on routing policies like geolocation or latency.
+    Failover: Automatically redirecting traffic during outages to backup servers.
+#### 4. Security
 ![title](images/foundation_security.png)
+#### 4.1 Common used security services and their use cases
+
+1. __AWS Identity and Access Management (IAM)__
+
+A service that controls access to AWS resources using users, roles, and policies.
+
+__Use Cases__:
+
+    User authentication and authorization: Managing who can access specific AWS resources.
+    Granular permissions: Enforcing least privilege access for different teams or services.
+    Service-to-service access: Allowing secure interactions between AWS services using roles.
+
+2. __AWS Key Management Service (KMS)__
+
+A managed service for creating and controlling encryption keys.
+
+__Use Cases__:
+
+    Data encryption: Encrypting data in S3, EBS, or RDS.
+    Application-level encryption: Securing sensitive data like API keys or user credentials.
+    Compliance: Meeting regulatory requirements by managing cryptographic keys securely.
+
+3. __AWS CloudTrail__
+
+A service that provides governance, compliance, and operational audit logs of AWS account activities.
+
+__Use Cases__:
+
+    Audit logging: Tracking changes to resources and identifying unauthorized access.
+    Security analysis: Monitoring and investigating suspicious activities.
+    Compliance reporting: Proving adherence to regulations by providing an activity history.
