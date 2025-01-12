@@ -330,65 +330,85 @@ Voorbeeld:
 ### AWS OpsCenter
 
 
-OpsCenter helpt bij het organiseren van incidentbeheer binnen AWS, door het automatisch creëren en beheren van incidenten, ook wel "OpsItems" genoemd. Het biedt teams een centrale plaats om problemen op te lossen en de status bij te houden.
-Praktische Case
+__OpsCenter__ helpt bij het organiseren van incidentbeheer binnen AWS, door het automatisch creëren en beheren van incidenten, ook wel __"OpsItems"__ genoemd. Het biedt teams een centrale plaats om problemen op te lossen en de status bij te houden.
 
-Een organisatie gebruikt OpsCenter om automatisch incidenten te genereren wanneer een kritieke service uitvalt, zoals een database die niet beschikbaar is. Het team kan het probleem snel identificeren en oplossen, met alle communicatie en logboeken verzameld in een enkel OpsItem.
-AWS Parameter Store
+__Praktische Case__
+Een organisatie gebruikt __OpsCenter__ om automatisch incidenten te genereren wanneer een kritieke service uitvalt, zoals een database die niet beschikbaar is. Het team kan het probleem snel identificeren en oplossen, met alle communicatie en logboeken verzameld in een enkel OpsItem.
 
-
-AWS Systems Manager Parameter Store biedt veilige opslag voor configuratie-instellingen, zoals API-sleutels, wachtwoorden en andere gevoelige gegevens.
+__AWS Parameter Store__
+__AWS Systems Manager Parameter Store__ biedt veilige opslag voor configuratie-instellingen, zoals API-sleutels, wachtwoorden en andere gevoelige gegevens.
 Praktische Case
 
 Een ontwikkelaar slaat API-sleutels voor een externe service op in Parameter Store, zodat deze veilig kunnen worden opgehaald door EC2-instances zonder hardcoding van de sleutels in de applicatiecode.
-Key Features van AWS Parameter Store
 
-    Veilige opslag van gegevens:
-        Voorbeeld: API-sleutels worden versleuteld opgeslagen en kunnen alleen door geautoriseerde gebruikers worden opgehaald.
+#### Key Features van AWS Parameter Store
 
-    Versiebeheer:
-        Voorbeeld: Wanneer een API-sleutel wordt gewijzigd, kan de vorige versie behouden blijven zodat systemen die die sleutel nog gebruiken niet breken.
+__Veilige opslag van gegevens__:
+Voorbeeld: 
 
-    Integratie met andere AWS-services:
-        Voorbeeld: Parameter Store kan automatisch worden geïntegreerd met EC2-instances via IAM-rollen om de vereiste parameters op te halen.
+        API-sleutels worden versleuteld opgeslagen en kunnen alleen door geautoriseerde gebruikers worden opgehaald.
 
-Private vs Public Parameters en References
+__Versiebeheer__:
+    Voorbeeld: 
+    
+    Wanneer een API-sleutel wordt gewijzigd, kan de vorige versie behouden blijven zodat systemen die die sleutel nog gebruiken niet breken.
 
-    Private Parameters:
-         Bevat gevoelige gegevens die versleuteld moeten worden opgeslagen.
-        Voorbeeld: Wachtwoorden voor databases.
+__Integratie met andere AWS-services__:
+        Voorbeeld: 
+        
+        Parameter Store kan automatisch worden geïntegreerd met EC2-instances via IAM-rollen om de vereiste parameters op te halen.
 
-    Public Parameters:
-         Bevat niet-gevoelige gegevens die niet versleuteld hoeven te worden.
-        Voorbeeld: Een configuratie-instelling zoals de versie van een applicatie.
+##### Private vs Public Parameters en References
 
-    References:
-         Verwijzingen naar andere parameters die binnen je infrastructuur worden gebruikt.
-        Voorbeeld: Een parameter die naar een andere parameter verwijst, zoals de naam van een database.
+__Private Parameters__:
+Bevat gevoelige gegevens die versleuteld moeten worden opgeslagen.
+    Voorbeeld: 
+        
+        Wachtwoorden voor databases.
 
-AWS Automation Runbook
+__Public Parameters__:
+Bevat niet-gevoelige gegevens die niet versleuteld hoeven te worden.
+Voorbeeld:
+        
+         Een configuratie-instelling zoals de versie van een applicatie.
+
+__References__:
+Verwijzingen naar andere parameters die binnen je infrastructuur worden gebruikt.
+Voorbeeld: 
+
+    Een parameter die naar een andere parameter verwijst, zoals de naam van een database.
+
+#### AWS Automation Runbook
 
 
-AWS Automation Runbook is een set geautomatiseerde stappen die worden uitgevoerd om routinematige of complexe taken binnen AWS te voltooien. Runbooks kunnen worden geconfigureerd om automatisch actie te ondernemen op basis van een trigger.
-Praktische Case
+__AWS Automation Runbook__ is een set geautomatiseerde stappen die worden uitgevoerd om routinematige of complexe taken binnen AWS te voltooien. Runbooks kunnen worden geconfigureerd om automatisch actie te ondernemen op basis van een trigger.
 
+__Praktische Case__
 Een organisatie gebruikt een Runbook om automatisch een EC2-instance te herstarten als het wordt gedetecteerd dat de instance meer dan een bepaalde hoeveelheid tijd zonder reactie is.
-Voor- en Nadelen van AWS Automation Runbooks
-Voordelen:
+##### Voor- en Nadelen van AWS Automation Runbooks
+__Voordelen:__
 
-    Automatisering van repetitieve taken:
-        Voorbeeld: Het automatisch patchen van systemen zonder handmatige interventie.
-    Consistentie in uitvoering:
-        Voorbeeld: Het uitvoeren van dezelfde set van handelingen in meerdere regio's zonder menselijke fouten.
+__Automatisering van repetitieve taken:__
+        Voorbeeld: 
+        
+        Het automatisch patchen van systemen zonder handmatige interventie.
+__Consistentie in uitvoering:__
+        Voorbeeld: 
+        
+        Het uitvoeren van dezelfde set van handelingen in meerdere regio's zonder menselijke fouten.
 
-Nadelen:
+__Nadelen__:
 
-    Complexiteit van configuratie:
-        Voorbeeld: Het opzetten van een Runbook voor een geavanceerde infrastructuur kan tijdrovend en complex zijn.
-    Kosten:
-        Voorbeeld: Het uitvoeren van veel automatisering kan de kosten verhogen afhankelijk van de vereiste resources.
+__Complexiteit van configuratie:__
+        Voorbeeld: 
+        
+        Het opzetten van een Runbook voor een geavanceerde infrastructuur kan tijdrovend en complex zijn.
+__Kosten__:
+        Voorbeeld: 
+        
+        Het uitvoeren van veel automatisering kan de kosten verhogen afhankelijk van de vereiste resources.
 
-AWS Automation Runbook binnen het IaC Landschap
+### AWS Automation Runbook binnen het IaC Landschap
 Vergelijking met Andere Frameworks
 
 Automation Runbooks in AWS kunnen worden vergeleken met Infrastructure-as-Code (IaC) tools zoals Terraform of CloudFormation. Het verschil is dat Runbooks specifiek gericht zijn op het automatiseren van operationele taken, terwijl IaC zich richt op het definiëren van infrastructuur en resources.
