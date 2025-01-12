@@ -1024,90 +1024,120 @@ __Probleemoplossing en actie:__
 
 __Cloud Native:__
     Het ontwikkelen van applicaties die ontworpen zijn voor de cloud, waarbij ze profiteren van schaalbaarheid, veerkracht en flexibiliteit.
-        Usecase: 
+    
+Usecase: 
         
     Een startup bouwt een cloud-native applicatie in AWS, gebruikmakend van verschillende AWS-diensten zoals EC2, Lambda, en RDS.
 
 __Microservices:__
     Het opdelen van applicaties in kleine, onafhankelijke services die kunnen worden gedeployed, beheerd en geschaald.
-        Usecase: 
+Usecase: 
         
     Een e-commerceplatform implementeert microservices voor betalingsverwerking, voorraadbeheer en klantenservice, waarbij elke service afzonderlijk kan worden geschaald.
 
 __Containers:__
     Het verpakken van applicaties en hun afhankelijkheden in containers voor gemakkelijke implementatie en schaalbaarheid.
-        Usecase: 
+
+Usecase: 
         
     Een ontwikkelteam gebruikt Docker en ECS om hun applicatie in containers te draaien en automatisch te schalen op basis van de vraag.
 
 __Serverless:__
 Het bouwen van applicaties zonder je zorgen te maken over het beheren van servers, waarbij cloudproviders de infrastructuur beheren.
-        Usecase: 
+
+Usecase: 
         
         Een bedrijf gebruikt AWS Lambda om API-aanroepen te verwerken zonder serverbeheer, waarbij de applicatie automatisch schaalt op basis van het aantal verzoeken.
 
 __CI/CD:__
 Het implementeren van continue integratie en continue levering om sneller en veiliger nieuwe versies van applicaties uit te rollen.
-        Usecase: 
+
+Usecase: 
         
         Een DevOps-team gebruikt AWS CodePipeline en AWS CodeBuild voor automatische code-integratie en -implementatie naar productie.
 
 __Security:__
 Het integreren van beveiliging in elke fase van de applicatieontwikkeling en -implementatie.
-        Usecase: 
+Usecase: 
         
         Een fintech-applicatie implementeert encryptie en IAM-beleid via AWS om te zorgen voor veilige toegang tot gevoelige klantinformatie.
 
-Proactieve- en Reactieve Operations
+### Proactieve- en Reactieve Operations
 
-    Proactieve Operations:
-         Proactieve operations omvatten het anticiperen op mogelijke problemen voordat ze zich voordoen, bijvoorbeeld door monitoring en performance-optimalisatie.
-        Voorbeeld: Het instellen van CloudWatch Alarms om vooraf waarschuwingen te ontvangen voordat systeembronnen uitputten.
+__Proactieve Operations:__
+    Proactieve operations omvatten het anticiperen op mogelijke problemen voordat ze zich voordoen, bijvoorbeeld door monitoring en performance-optimalisatie.
+        Voorbeeld: 
+        
+        Het instellen van CloudWatch Alarms om vooraf waarschuwingen te ontvangen voordat systeembronnen uitputten.
 
-    Reactieve Operations:
+__Reactieve Operations:__
          Reactieve operations richten zich op het oplossen van problemen zodra ze zich voordoen.
-        Voorbeeld: Wanneer een server crasht, wordt automatisch een incident aangemaakt en wordt het probleem opgelost door het team via AWS Systems Manager.
+        Voorbeeld: 
+        
+        Wanneer een server crasht, wordt automatisch een incident aangemaakt en wordt het probleem opgelost door het team via AWS Systems Manager.
 
-Niveaus van Observability
+### Niveaus van Observability
 
-    Metrics:
+__Metrics:__
          Het verzamelen van kwantitatieve gegevens over systeemgedrag, zoals CPU-gebruik, geheugen of responstijd.
-        Usecase: Het gebruik van CloudWatch Metrics om systeemcapaciteit en prestaties te monitoren.
 
-    Logs:
+Usecase: 
+        
+        Het gebruik van CloudWatch Metrics om systeemcapaciteit en prestaties te monitoren.
+
+__Logs:__
          Het verzamelen van gedetailleerde tekstgegevens die inzicht geven in wat er zich binnen een systeem afspeelt.
-        Usecase: Het gebruik van CloudWatch Logs om foutmeldingen van applicaties in real-time te monitoren.
 
-    Traces:
+Usecase: 
+        
+        Het gebruik van CloudWatch Logs om foutmeldingen van applicaties in real-time te monitoren.
+
+__Traces:__
          Het volgen van de volledige levenscyclus van een transactie binnen het systeem, wat nuttig is voor debugging en prestatieanalyse.
-        Usecase: Het gebruik van AWS X-Ray om een klanttransactie van begin tot eind te volgen en knelpunten te identificeren.
 
-Pijlers van Observability
+Usecase: 
 
-    Monitoring:
+    Het gebruik van AWS X-Ray om een klanttransactie van begin tot eind te volgen en knelpunten te identificeren.
+
+### Pijlers van Observability
+
+__Monitoring:__
          Het continu volgen van systeemgedrag en prestaties.
-        Voorbeeld: Gebruik van CloudWatch om continu server- en applicatieprestaties te bewaken.
+        Voorbeeld: 
+        
+    Gebruik van CloudWatch om continu server- en applicatieprestaties te bewaken.
 
-    Logging:
+__Logging:__
          Het vastleggen van gedetailleerde tekstuele gegevens die je helpen bij het onderzoeken van fouten.
-        Voorbeeld: Het gebruiken van CloudWatch Logs om applicatiefouten te identificeren.
+        Voorbeeld: 
+        
+    Het gebruiken van CloudWatch Logs om applicatiefouten te identificeren.
 
-    Tracing:
+__Tracing:__
          Het volgen van het pad van verzoeken en data door een systeem.
-        Voorbeeld: Het gebruik van AWS X-Ray voor end-to-end tracing van een klantbestelling.
+        Voorbeeld: 
 
-Voordelen van Application Observability
 
-    Snel Probleemoplossing:
+    Het gebruik van AWS X-Ray voor end-to-end tracing van een klantbestelling.
+
+### Voordelen van Application Observability
+
+__Snel Probleemoplossing:__
         Uitleg: Door snel inzicht te krijgen in systeemprestaties kunnen problemen sneller worden opgelost.
-        Voorbeeld: In een webwinkel kan de observability-tools snel een trage database-query identificeren en het probleem verhelpen.
+        Voorbeeld: 
+        
+        In een webwinkel kan de observability-tools snel een trage database-query identificeren en het probleem verhelpen.
 
-    Betere Systeemoptimalisatie:
+__Betere Systeemoptimalisatie:__
         Uitleg: Het identificeren van knelpunten leidt tot gerichte optimalisatie van het systeem.
-        Voorbeeld: Een cloudgebaseerde applicatie die regelmatig traag is, kan worden geoptimaliseerd door de CPU- en geheugengebruik te monitoren via CloudWatch Metrics.
+        Voorbeeld: 
+        
+        Een cloudgebaseerde applicatie die regelmatig traag is, kan worden geoptimaliseerd door de CPU- en geheugengebruik te monitoren via CloudWatch Metrics.
 
-    Verhoogde Beschikbaarheid:
+__Verhoogde Beschikbaarheid:__
         Uitleg: Het monitoren van applicatieprestaties helpt bij het identificeren van problemen die de beschikbaarheid kunnen beïnvloeden, wat de uptime verbetert.
-        Voorbeeld: Door observability in te stellen, kan een website automatisch reageren op verhoogd verkeer en schaalbare infrastructuur implementeren om downtime te voorkomen.
+        Voorbeeld: 
+        
+        Door observability in te stellen, kan een website automatisch reageren op verhoogd verkeer en schaalbare infrastructuur implementeren om downtime te voorkomen.
 ## Cloudformation en Automation
 
