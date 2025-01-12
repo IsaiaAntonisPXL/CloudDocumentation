@@ -822,9 +822,117 @@ __Praktische Case:__
 __Jenkins:__
         Jenkins is een open-source automation server die gebruikt wordt voor Continuous Integration en Continuous Deployment.
         Vergelijking: Jenkins vereist meer handmatige configuratie en beheer van de server, terwijl CodeBuild volledig beheerd wordt door AWS.
-        
+
 __Praktische Case:__
         Jenkins wordt vaak gebruikt in omgevingen waar volledige controle over de serverconfiguratie vereist is, terwijl AWS CodeBuild eenvoudiger is voor teams die geen servers willen beheren.
 ## Container service in de cloud
+### Concepten binnen AWS Containers: ECR, Fargate, ECS, EKS
+__1. ECR (Elastic Container Registry)__
+
+__Amazon Elastic Container Registry (ECR)__ is een volledig beheerde Docker container registry service van AWS, waarmee je containers kunt opslaan, beheren en delen.
+    Voorbeeld: 
+    
+    Een ontwikkelteam bouwt een Docker-container voor hun applicatie en slaat deze op in ECR. De container kan vervolgens gemakkelijk worden opgehaald door ECS of Fargate voor deployment.
+
+__2. Fargate__
+
+__AWS Fargate__ is een compute engine voor ECS en EKS die serverloze containers mogelijk maakt. Dit betekent dat je geen infrastructuur hoeft te beheren; je hoeft alleen je containers te definiëren en Fargate doet de rest.
+    Voorbeeld: 
+    
+    Een bedrijf heeft een webapplicatie die draait in containers. Ze gebruiken AWS Fargate om de containers automatisch te schalen en te beheren zonder de noodzaak voor serverbeheer.
+
+__3. Deployment__
+
+__Deployment__ is het proces waarbij een applicatie of service in een nieuwe versie op een server of platform wordt geïmplementeerd.
+    Voorbeeld: 
+    
+    Na het maken van wijzigingen in een container, wordt deze opnieuw gepusht naar ECR en vervolgens gedeployed naar een ECS-cluster of Fargate voor productie.
+
+__4. Manifests__
+
+__Een manifest__ is een JSON- of YAML-bestand dat configuratie-instellingen en specificaties bevat voor een container. Dit bestand definieert welke containerafbeeldingen worden gebruikt en welke configuraties er voor een service moeten gelden.
+    Voorbeeld: 
+    
+    Een manifest voor ECS kan specificeren welke Docker-image uit ECR moet worden gehaald en welke CPU- en geheugenspecificaties vereist zijn voor de container.
+
+### ECS (Elastic Container Service)
+#### Componenten van ECS
+
+__ECS Cluster:__
+         Een cluster is een verzameling EC2-instances of Fargate-instanties waarop containers worden uitgevoerd.
+        Voorbeeld: 
+        
+    Een bedrijf heeft een ECS-cluster dat uit meerdere EC2-instances bestaat. Elke instance kan meerdere containers draaien die verschillende microservices aanbieden.
+
+__Task Definition:__
+    Een task definition is een blauwdruk voor het starten van containers binnen ECS. Het definieert de containerafbeelding, de hoeveelheid CPU en geheugen, en andere instellingen zoals omgevingsvariabelen.
+        Voorbeeld: 
+        
+    Een task definition definieert dat een container de laatste versie van een applicatie uit ECR moet trekken, met 1 CPU-eenheid en 512 MB geheugen.
+
+__Task:__
+    Een task is een instantie van een task definition die daadwerkelijk wordt uitgevoerd binnen een ECS-cluster.
+        Voorbeeld: 
+        
+    Een applicatie die in een ECS-cluster draait, kan uit meerdere taken bestaan, afhankelijk van de services die het levert.
+
+__Service:__
+    Een ECS-service zorgt voor de continue uitvoering van een opgegeven taak en zorgt voor het beheren van de schaalbaarheid en de beschikbaarheid van de taak.
+        Voorbeeld: 
+        
+    Een ECS-service wordt gebruikt om een webapplicatie altijd beschikbaar te houden door de containers automatisch te schalen op basis van vraag.
+
+### Verschillen tussen ECS en EKS
+__1. ECS (Elastic Container Service)__
+
+ECS is een beheerde container-orchestratie service die volledig door AWS wordt beheerd. Je hebt de mogelijkheid om containers te draaien op EC2-instances of Fargate, zonder dat je zelf clusterbeheer hoeft te doen.
+    Voorbeeld: 
+    
+    Wanneer je applicaties binnen containers wilt draaien zonder de complexiteit van Kubernetes te hoeven beheren, is ECS een goede keuze. Het is eenvoudiger te beheren en ideaal voor kleinere omgevingen of applicaties.
+
+__2. EKS (Elastic Kubernetes Service)__
+
+EKS is een beheerde service die Kubernetes-clusters op AWS uitvoert. Kubernetes is een platform voor containerorkestratie en biedt meer geavanceerde mogelijkheden dan ECS, maar vereist een grotere leercurve en meer configuratie.
+    Voorbeeld: 
+    
+    Een organisatie die gebruik maakt van Kubernetes voor de orkestratie van containers (bijvoorbeeld vanwege de complexiteit van hun applicaties of vanwege de vereiste voor meer controle) zou EKS gebruiken om Kubernetes-clusters te beheren.
+
+__Vergelijking:__
+__ECS:__ Geschikt voor gebruikers die eenvoudiger containerbeheer willen zonder in de complexiteit van Kubernetes te duiken.
+__EKS:__ Geschikt voor gebruikers die Kubernetes willen gebruiken voor containerbeheer met de extra configuratiemogelijkheden, maar wel de voordelen van een beheerde service van AWS.
+
+#### __Criteria voor het kiezen tussen Fargate, EKS en ECS__
+__1. Fargate:__
+
+Wanneer te kiezen: Als je geen infrastructuurbeheer wilt en je je puur wilt concentreren op het draaien van containers zonder de onderliggende servers te beheren.
+    Voorbeeld: 
+    
+    Een bedrijf heeft geen behoefte aan beheer van EC2-instanties en wil gebruikmaken van serverless computing voor containers.
+
+__2. ECS:__
+
+Wanneer te kiezen: Als je eenvoud wilt in containerbeheer zonder de extra complexiteit van Kubernetes. ECS is eenvoudig te integreren met andere AWS-services.
+    Voorbeeld: 
+    
+    Een klein bedrijf dat een aantal containers wil beheren zonder de complexiteit van Kubernetes is beter af met ECS.
+
+__3. EKS:__
+
+Wanneer te kiezen: Als je Kubernetes vereist voor containerorkestratie of als je al ervaring hebt met Kubernetes en de geavanceerde mogelijkheden ervan wilt gebruiken.
+    Voorbeeld: 
+    
+    Een organisatie met meerdere microservices die Kubernetes al gebruikt, zou EKS gebruiken om Kubernetes-clusters te beheren zonder infrastructuurbeheertaken.
+
+#### __Revisions en Versioning binnen ECS Deployments__
+
+In ECS worden task definitions gebruikt om container-configuraties te definiëren, en elke keer dat een wijziging in een task definition wordt doorgevoerd, wordt een nieuwe revision van de task definition aangemaakt. Dit stelt je in staat om verschillende versies van je containers te beheren en rollbacks uit te voeren als dat nodig is.
+
+    Voorbeeld: Als je een nieuwe versie van je applicatie hebt gebouwd en een nieuwe task definition hebt aangemaakt met een andere Docker-image, wordt er een nieuwe revision aangemaakt. Als een update mislukt, kun je eenvoudig terugrollen naar de vorige revision.
+
+#### __Verschil met EKS/Kubernetes__
+
+In Kubernetes, via Deployments, kun je versies beheren met behulp van replica sets en rolling updates. Kubernetes biedt een gedetailleerdere controle over de versie en de uitrolstrategieën. Dit vereist echter meer configuratie en kennis van Kubernetes zelf.
+
+    Voorbeeld: In Kubernetes zou je een Deployment gebruiken om de versie van een pod te beheren. Als je een nieuwe versie wilt uitrollen, maak je een nieuwe versie van de Deployment en Kubernetes zorgt voor een geleidelijke uitrol zonder downtime.
 ## Cloudformation en Automation
 
